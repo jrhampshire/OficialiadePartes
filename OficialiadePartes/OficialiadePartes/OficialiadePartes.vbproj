@@ -87,12 +87,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatPersonal.Designer.vb">
-      <DependentUpon>CatPersonal.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CatPersonal.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Correspondencia.Designer.vb">
       <DependentUpon>Correspondencia.vb</DependentUpon>
     </Compile>
@@ -120,17 +114,27 @@
     <Compile Include="Nueva_Correspondencia.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Clases\Oficio.vb" />
+    <Compile Include="Nueva_Dependencia.Designer.vb">
+      <DependentUpon>Nueva_Dependencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Nueva_Dependencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Principal.Designer.vb">
       <DependentUpon>Principal.vb</DependentUpon>
     </Compile>
     <Compile Include="Principal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Secretarias y Dependencias.Designer.vb">
+      <DependentUpon>Secretarias y Dependencias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Secretarias y Dependencias.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CatPersonal.resx">
-      <DependentUpon>CatPersonal.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Correspondencia.resx">
       <DependentUpon>Correspondencia.vb</DependentUpon>
     </EmbeddedResource>
@@ -143,8 +147,14 @@
     <EmbeddedResource Include="Nueva_Correspondencia.resx">
       <DependentUpon>Nueva_Correspondencia.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nueva_Dependencia.resx">
+      <DependentUpon>Nueva_Dependencia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretarias y Dependencias.resx">
+      <DependentUpon>Secretarias y Dependencias.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +219,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Mail_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modulos\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

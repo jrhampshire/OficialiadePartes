@@ -9,4 +9,10 @@
         Frm.ShowDialog()
 
     End Sub
+
+    Private Sub SecretariasYDependenciasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SecretariasYDependenciasToolStripMenuItem.Click
+        Dim frm As New Secretarias_y_Dependencias
+        frm.ShowDialog()
+
+    End Sub
 End Class

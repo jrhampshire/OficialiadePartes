@@ -25,20 +25,20 @@ Partial Class Principal
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CorrespondenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatalogosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SecretariasYDependenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OficiosPorDepartamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ManualDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SolicitarAsistenciaRemotaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportarUnErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CorrespondenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ManualDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SolicitarAsistenciaRemotaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -78,6 +78,25 @@ Partial Class Principal
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
         Me.ArchivoToolStripMenuItem.Text = "Archivo"
+        '
+        'CorrespondenciaToolStripMenuItem
+        '
+        Me.CorrespondenciaToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Mail_16x16
+        Me.CorrespondenciaToolStripMenuItem.Name = "CorrespondenciaToolStripMenuItem"
+        Me.CorrespondenciaToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.CorrespondenciaToolStripMenuItem.Text = "Correspondencia"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(161, 6)
+        '
+        'SalirToolStripMenuItem
+        '
+        Me.SalirToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Log_Out_16x16
+        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'EditarToolStripMenuItem
         '
@@ -119,10 +138,24 @@ Partial Class Principal
         Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
         Me.AyudaToolStripMenuItem.Text = "Ayuda"
         '
+        'ManualDeUsuarioToolStripMenuItem
+        '
+        Me.ManualDeUsuarioToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Help_16x16
+        Me.ManualDeUsuarioToolStripMenuItem.Name = "ManualDeUsuarioToolStripMenuItem"
+        Me.ManualDeUsuarioToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.ManualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(213, 6)
+        '
+        'SolicitarAsistenciaRemotaToolStripMenuItem
+        '
+        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Apps_teamviewer_icon
+        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Name = "SolicitarAsistenciaRemotaToolStripMenuItem"
+        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
+        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Text = "Solicitar Asistencia Remota"
         '
         'ReportarUnErrorToolStripMenuItem
         '
@@ -134,39 +167,6 @@ Partial Class Principal
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(213, 6)
-        '
-        'ToolStripMenuItem3
-        '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(161, 6)
-        '
-        'CorrespondenciaToolStripMenuItem
-        '
-        Me.CorrespondenciaToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Mail_16x16
-        Me.CorrespondenciaToolStripMenuItem.Name = "CorrespondenciaToolStripMenuItem"
-        Me.CorrespondenciaToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-        Me.CorrespondenciaToolStripMenuItem.Text = "Correspondencia"
-        '
-        'SalirToolStripMenuItem
-        '
-        Me.SalirToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Log_Out_16x16
-        Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-        Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'ManualDeUsuarioToolStripMenuItem
-        '
-        Me.ManualDeUsuarioToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Help_16x16
-        Me.ManualDeUsuarioToolStripMenuItem.Name = "ManualDeUsuarioToolStripMenuItem"
-        Me.ManualDeUsuarioToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.ManualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario"
-        '
-        'SolicitarAsistenciaRemotaToolStripMenuItem
-        '
-        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Apps_teamviewer_icon
-        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Name = "SolicitarAsistenciaRemotaToolStripMenuItem"
-        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.SolicitarAsistenciaRemotaToolStripMenuItem.Text = "Solicitar Asistencia Remota"
         '
         'AcercaDeToolStripMenuItem
         '

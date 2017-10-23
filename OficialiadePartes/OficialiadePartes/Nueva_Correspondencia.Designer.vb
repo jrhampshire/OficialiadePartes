@@ -27,10 +27,11 @@ Partial Class Nueva_Correspondencia
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button_NuevoEmisor = New System.Windows.Forms.Button()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -42,7 +43,6 @@ Partial Class Nueva_Correspondencia
         Me.Button_CargaDocumento = New System.Windows.Forms.Button()
         Me.Button_Cancelar = New System.Windows.Forms.Button()
         Me.Button_Aceptar = New System.Windows.Forms.Button()
-        Me.Button_NuevoEmisor = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -92,22 +92,22 @@ Partial Class Nueva_Correspondencia
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Emisor"
         '
-        'Label3
+        'Button_NuevoEmisor
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(7, 20)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(71, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Dependencia"
+        Me.Button_NuevoEmisor.Location = New System.Drawing.Point(426, 47)
+        Me.Button_NuevoEmisor.Name = "Button_NuevoEmisor"
+        Me.Button_NuevoEmisor.Size = New System.Drawing.Size(26, 23)
+        Me.Button_NuevoEmisor.TabIndex = 16
+        Me.Button_NuevoEmisor.Text = "..."
+        Me.Button_NuevoEmisor.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'ComboBox2
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(84, 17)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(52, 49)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(368, 21)
+        Me.ComboBox2.TabIndex = 3
         '
         'Label4
         '
@@ -118,13 +118,22 @@ Partial Class Nueva_Correspondencia
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Nombre"
         '
-        'ComboBox2
+        'ComboBox1
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(52, 49)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox2.TabIndex = 3
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(84, 17)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(368, 21)
+        Me.ComboBox1.TabIndex = 1
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(7, 20)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 13)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Dependencia"
         '
         'Label5
         '
@@ -203,7 +212,7 @@ Partial Class Nueva_Correspondencia
         '
         'Button_Cancelar
         '
-        Me.Button_Cancelar.Location = New System.Drawing.Point(396, 370)
+        Me.Button_Cancelar.Location = New System.Drawing.Point(396, 357)
         Me.Button_Cancelar.Name = "Button_Cancelar"
         Me.Button_Cancelar.Size = New System.Drawing.Size(75, 23)
         Me.Button_Cancelar.TabIndex = 16
@@ -212,27 +221,18 @@ Partial Class Nueva_Correspondencia
         '
         'Button_Aceptar
         '
-        Me.Button_Aceptar.Location = New System.Drawing.Point(315, 370)
+        Me.Button_Aceptar.Location = New System.Drawing.Point(315, 357)
         Me.Button_Aceptar.Name = "Button_Aceptar"
         Me.Button_Aceptar.Size = New System.Drawing.Size(75, 23)
         Me.Button_Aceptar.TabIndex = 17
         Me.Button_Aceptar.Text = "Aceptar"
         Me.Button_Aceptar.UseVisualStyleBackColor = True
         '
-        'Button_NuevoEmisor
-        '
-        Me.Button_NuevoEmisor.Location = New System.Drawing.Point(426, 47)
-        Me.Button_NuevoEmisor.Name = "Button_NuevoEmisor"
-        Me.Button_NuevoEmisor.Size = New System.Drawing.Size(26, 23)
-        Me.Button_NuevoEmisor.TabIndex = 16
-        Me.Button_NuevoEmisor.Text = "..."
-        Me.Button_NuevoEmisor.UseVisualStyleBackColor = True
-        '
         'Nueva_Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(483, 405)
+        Me.ClientSize = New System.Drawing.Size(483, 392)
         Me.Controls.Add(Me.Button_Aceptar)
         Me.Controls.Add(Me.Button_Cancelar)
         Me.Controls.Add(Me.Button_CargaDocumento)
