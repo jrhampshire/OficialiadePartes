@@ -83,6 +83,7 @@ Partial Class Nueva_Dependencia
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Nueva_Dependencia"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nueva Dependencia"
         Me.ResumeLayout(False)
         Me.PerformLayout()

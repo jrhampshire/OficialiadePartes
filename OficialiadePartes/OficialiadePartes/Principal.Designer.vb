@@ -109,7 +109,7 @@ Partial Class Principal
         '
         Me.CatalogosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SecretariasYDependenciasToolStripMenuItem})
         Me.CatalogosToolStripMenuItem.Name = "CatalogosToolStripMenuItem"
-        Me.CatalogosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CatalogosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.CatalogosToolStripMenuItem.Text = "Catalogos"
         '
         'SecretariasYDependenciasToolStripMenuItem
@@ -183,6 +183,7 @@ Partial Class Principal
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Principal"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Oficialia de Partes"
         Me.ToolStripContainer1.TopToolStripPanel.ResumeLayout(False)
         Me.ToolStripContainer1.TopToolStripPanel.PerformLayout()
