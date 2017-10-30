@@ -22,36 +22,45 @@ Partial Class Nueva_Correspondencia
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.components = New System.ComponentModel.Container()
+        Me.TextBoxNumOficio = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button_NuevoEmisor = New System.Windows.Forms.Button()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox_Remitente = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ComboBox_Dependencia = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox_Oficio = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.TextBox_Observaciones = New System.Windows.Forms.TextBox()
+        Me.ComboBox_Destinatario = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox_Documento = New System.Windows.Forms.TextBox()
         Me.Button_CargaDocumento = New System.Windows.Forms.Button()
         Me.Button_Cancelar = New System.Windows.Forms.Button()
         Me.Button_Aceptar = New System.Windows.Forms.Button()
+        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
+        Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DependenciasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
+        Me.PersonasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PersonasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.PersonasTableAdapter()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'TextBox1
+        'TextBoxNumOficio
         '
-        Me.TextBox1.Location = New System.Drawing.Point(108, 16)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.TextBoxNumOficio.Location = New System.Drawing.Point(108, 16)
+        Me.TextBoxNumOficio.Name = "TextBoxNumOficio"
+        Me.TextBoxNumOficio.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxNumOficio.TabIndex = 0
         '
         'Label1
         '
@@ -71,19 +80,19 @@ Partial Class Nueva_Correspondencia
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Fecha"
         '
-        'DateTimePicker1
+        'DateTimePicker
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(271, 15)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 3
+        Me.DateTimePicker.Location = New System.Drawing.Point(271, 15)
+        Me.DateTimePicker.Name = "DateTimePicker"
+        Me.DateTimePicker.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker.TabIndex = 3
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Button_NuevoEmisor)
-        Me.GroupBox1.Controls.Add(Me.ComboBox2)
+        Me.GroupBox1.Controls.Add(Me.ComboBox_Remitente)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.ComboBox1)
+        Me.GroupBox1.Controls.Add(Me.ComboBox_Dependencia)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 36)
         Me.GroupBox1.Name = "GroupBox1"
@@ -101,13 +110,13 @@ Partial Class Nueva_Correspondencia
         Me.Button_NuevoEmisor.Text = "..."
         Me.Button_NuevoEmisor.UseVisualStyleBackColor = True
         '
-        'ComboBox2
+        'ComboBox_Remitente
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(52, 49)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox2.TabIndex = 3
+        Me.ComboBox_Remitente.FormattingEnabled = True
+        Me.ComboBox_Remitente.Location = New System.Drawing.Point(52, 49)
+        Me.ComboBox_Remitente.Name = "ComboBox_Remitente"
+        Me.ComboBox_Remitente.Size = New System.Drawing.Size(368, 21)
+        Me.ComboBox_Remitente.TabIndex = 3
         '
         'Label4
         '
@@ -118,13 +127,16 @@ Partial Class Nueva_Correspondencia
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Nombre"
         '
-        'ComboBox1
+        'ComboBox_Dependencia
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(84, 17)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox1.TabIndex = 1
+        Me.ComboBox_Dependencia.DataSource = Me.DependenciasBindingSource
+        Me.ComboBox_Dependencia.DisplayMember = "Dependencia"
+        Me.ComboBox_Dependencia.FormattingEnabled = True
+        Me.ComboBox_Dependencia.Location = New System.Drawing.Point(84, 17)
+        Me.ComboBox_Dependencia.Name = "ComboBox_Dependencia"
+        Me.ComboBox_Dependencia.Size = New System.Drawing.Size(368, 21)
+        Me.ComboBox_Dependencia.TabIndex = 1
+        Me.ComboBox_Dependencia.ValueMember = "Id_Dependencia"
         '
         'Label3
         '
@@ -144,12 +156,12 @@ Partial Class Nueva_Correspondencia
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Asunto del Oficio"
         '
-        'TextBox2
+        'TextBox_Oficio
         '
-        Me.TextBox2.Location = New System.Drawing.Point(107, 173)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(364, 20)
-        Me.TextBox2.TabIndex = 6
+        Me.TextBox_Oficio.Location = New System.Drawing.Point(107, 173)
+        Me.TextBox_Oficio.Name = "TextBox_Oficio"
+        Me.TextBox_Oficio.Size = New System.Drawing.Size(364, 20)
+        Me.TextBox_Oficio.TabIndex = 6
         '
         'Label6
         '
@@ -160,21 +172,23 @@ Partial Class Nueva_Correspondencia
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "Observaciones"
         '
-        'TextBox3
+        'TextBox_Observaciones
         '
-        Me.TextBox3.Location = New System.Drawing.Point(13, 224)
-        Me.TextBox3.Multiline = True
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(458, 97)
-        Me.TextBox3.TabIndex = 8
+        Me.TextBox_Observaciones.Location = New System.Drawing.Point(13, 224)
+        Me.TextBox_Observaciones.Multiline = True
+        Me.TextBox_Observaciones.Name = "TextBox_Observaciones"
+        Me.TextBox_Observaciones.Size = New System.Drawing.Size(458, 97)
+        Me.TextBox_Observaciones.TabIndex = 8
         '
-        'ComboBox3
+        'ComboBox_Destinatario
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(82, 139)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(389, 21)
-        Me.ComboBox3.TabIndex = 12
+        Me.ComboBox_Destinatario.DataSource = Me.PersonasBindingSource
+        Me.ComboBox_Destinatario.DisplayMember = "Persona"
+        Me.ComboBox_Destinatario.FormattingEnabled = True
+        Me.ComboBox_Destinatario.Location = New System.Drawing.Point(82, 139)
+        Me.ComboBox_Destinatario.Name = "ComboBox_Destinatario"
+        Me.ComboBox_Destinatario.Size = New System.Drawing.Size(389, 21)
+        Me.ComboBox_Destinatario.TabIndex = 12
         '
         'Label7
         '
@@ -194,12 +208,12 @@ Partial Class Nueva_Correspondencia
         Me.Label8.TabIndex = 13
         Me.Label8.Text = "Documento Digitalizado"
         '
-        'TextBox4
+        'TextBox_Documento
         '
-        Me.TextBox4.Location = New System.Drawing.Point(135, 330)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(298, 20)
-        Me.TextBox4.TabIndex = 14
+        Me.TextBox_Documento.Location = New System.Drawing.Point(135, 330)
+        Me.TextBox_Documento.Name = "TextBox_Documento"
+        Me.TextBox_Documento.Size = New System.Drawing.Size(298, 20)
+        Me.TextBox_Documento.TabIndex = 14
         '
         'Button_CargaDocumento
         '
@@ -228,6 +242,29 @@ Partial Class Nueva_Correspondencia
         Me.Button_Aceptar.Text = "Aceptar"
         Me.Button_Aceptar.UseVisualStyleBackColor = True
         '
+        'CorrespondenciaDataSet
+        '
+        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
+        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DependenciasBindingSource
+        '
+        Me.DependenciasBindingSource.DataMember = "Dependencias"
+        Me.DependenciasBindingSource.DataSource = Me.CorrespondenciaDataSet
+        '
+        'DependenciasTableAdapter
+        '
+        Me.DependenciasTableAdapter.ClearBeforeFill = True
+        '
+        'PersonasBindingSource
+        '
+        Me.PersonasBindingSource.DataMember = "Personas"
+        Me.PersonasBindingSource.DataSource = Me.CorrespondenciaDataSet
+        '
+        'PersonasTableAdapter
+        '
+        Me.PersonasTableAdapter.ClearBeforeFill = True
+        '
         'Nueva_Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -236,47 +273,55 @@ Partial Class Nueva_Correspondencia
         Me.Controls.Add(Me.Button_Aceptar)
         Me.Controls.Add(Me.Button_Cancelar)
         Me.Controls.Add(Me.Button_CargaDocumento)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TextBox_Documento)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.ComboBox3)
+        Me.Controls.Add(Me.ComboBox_Destinatario)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox_Observaciones)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox_Oficio)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.DateTimePicker1)
+        Me.Controls.Add(Me.DateTimePicker)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TextBoxNumOficio)
         Me.Name = "Nueva_Correspondencia"
         Me.Text = "Nueva Correspondencia"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBoxNumOficio As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents DateTimePicker As DateTimePicker
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents ComboBox_Remitente As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ComboBox_Dependencia As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox_Oficio As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents TextBox_Observaciones As TextBox
+    Friend WithEvents ComboBox_Destinatario As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox_Documento As TextBox
     Friend WithEvents Button_CargaDocumento As Button
     Friend WithEvents Button_Cancelar As Button
     Friend WithEvents Button_Aceptar As Button
     Friend WithEvents Button_NuevoEmisor As Button
+    Friend WithEvents CorrespondenciaDataSet As CorrespondenciaDataSet
+    Friend WithEvents DependenciasBindingSource As BindingSource
+    Friend WithEvents DependenciasTableAdapter As CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter
+    Friend WithEvents PersonasBindingSource As BindingSource
+    Friend WithEvents PersonasTableAdapter As CorrespondenciaDataSetTableAdapters.PersonasTableAdapter
 End Class
