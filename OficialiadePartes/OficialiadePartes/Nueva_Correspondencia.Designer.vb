@@ -32,26 +32,27 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Remitente = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ComboBox_Dependencia = New System.Windows.Forms.ComboBox()
+        Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox_Oficio = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_Observaciones = New System.Windows.Forms.TextBox()
         Me.ComboBox_Destinatario = New System.Windows.Forms.ComboBox()
+        Me.PersonasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox_Documento = New System.Windows.Forms.TextBox()
         Me.Button_CargaDocumento = New System.Windows.Forms.Button()
         Me.Button_Cancelar = New System.Windows.Forms.Button()
         Me.Button_Aceptar = New System.Windows.Forms.Button()
-        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
-        Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DependenciasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
-        Me.PersonasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PersonasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.PersonasTableAdapter()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -138,6 +139,16 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Dependencia.TabIndex = 1
         Me.ComboBox_Dependencia.ValueMember = "Id_Dependencia"
         '
+        'DependenciasBindingSource
+        '
+        Me.DependenciasBindingSource.DataMember = "Dependencias"
+        Me.DependenciasBindingSource.DataSource = Me.CorrespondenciaDataSet
+        '
+        'CorrespondenciaDataSet
+        '
+        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
+        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -189,6 +200,11 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Destinatario.Name = "ComboBox_Destinatario"
         Me.ComboBox_Destinatario.Size = New System.Drawing.Size(389, 21)
         Me.ComboBox_Destinatario.TabIndex = 12
+        '
+        'PersonasBindingSource
+        '
+        Me.PersonasBindingSource.DataMember = "Personas"
+        Me.PersonasBindingSource.DataSource = Me.CorrespondenciaDataSet
         '
         'Label7
         '
@@ -242,34 +258,25 @@ Partial Class Nueva_Correspondencia
         Me.Button_Aceptar.Text = "Aceptar"
         Me.Button_Aceptar.UseVisualStyleBackColor = True
         '
-        'CorrespondenciaDataSet
-        '
-        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DependenciasBindingSource
-        '
-        Me.DependenciasBindingSource.DataMember = "Dependencias"
-        Me.DependenciasBindingSource.DataSource = Me.CorrespondenciaDataSet
-        '
         'DependenciasTableAdapter
         '
         Me.DependenciasTableAdapter.ClearBeforeFill = True
         '
-        'PersonasBindingSource
-        '
-        Me.PersonasBindingSource.DataMember = "Personas"
-        Me.PersonasBindingSource.DataSource = Me.CorrespondenciaDataSet
-        '
         'PersonasTableAdapter
         '
         Me.PersonasTableAdapter.ClearBeforeFill = True
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.Filter = """Archivos PDF|*.pdf"""
+        Me.OpenFileDialog1.Title = "Seleccione un archivo PDF"
         '
         'Nueva_Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(483, 392)
+        Me.ControlBox = False
         Me.Controls.Add(Me.Button_Aceptar)
         Me.Controls.Add(Me.Button_Cancelar)
         Me.Controls.Add(Me.Button_CargaDocumento)
@@ -287,11 +294,12 @@ Partial Class Nueva_Correspondencia
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TextBoxNumOficio)
         Me.Name = "Nueva_Correspondencia"
-        Me.Text = "Nueva Correspondencia"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "| "
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -324,4 +332,5 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents DependenciasTableAdapter As CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter
     Friend WithEvents PersonasBindingSource As BindingSource
     Friend WithEvents PersonasTableAdapter As CorrespondenciaDataSetTableAdapters.PersonasTableAdapter
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class
