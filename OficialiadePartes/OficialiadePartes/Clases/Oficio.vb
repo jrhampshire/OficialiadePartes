@@ -9,7 +9,6 @@
     Private _Destinatario As String
     Private _Asunto As String = Nothing
     Private _Observaciones As String = Nothing
-    Private _Pdf As Byte
     Private _Path As String = Nothing
 
     Property NumOficio As String
@@ -92,14 +91,9 @@
             Return _Observaciones
         End Get
     End Property
-    Property Pdf As Byte
-        Set(value As Byte)
-            _Pdf = value
-        End Set
-        Get
-            Return _Pdf
-        End Get
-    End Property
+
+
+
     Property Path As String
         Set(value As String)
             _Path = value

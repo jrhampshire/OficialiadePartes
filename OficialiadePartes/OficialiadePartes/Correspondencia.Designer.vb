@@ -26,18 +26,6 @@ Partial Class Correspondencia
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.Nuevo = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
-        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
-        Me.DocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DocumentoTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DocumentoTableAdapter()
         Me.IdDocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NumeroOficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaOficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -47,14 +35,28 @@ Partial Class Correspondencia
         Me.RemitenteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DestinatarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PDFDataGridViewImageColumn = New System.Windows.Forms.DataGridViewImageColumn()
+        Me.DocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DocumentoTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DocumentoTableAdapter()
+        Me.Nuevo = New System.Windows.Forms.ToolStripButton()
+        Me.Button_Edita = New System.Windows.Forms.ToolStripButton()
+        Me.Button_Correo = New System.Windows.Forms.ToolStripButton()
+        Me.Button_Borrar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.Button_PDF = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip1.SuspendLayout()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -100,95 +102,6 @@ Partial Class Correspondencia
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
         Me.DataGridView1.TabIndex = 0
-        '
-        'ToolStrip1
-        '
-        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Nuevo, Me.ToolStripButton2, Me.ToolStripButton4, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
-        Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(487, 39)
-        Me.ToolStrip1.TabIndex = 0
-        '
-        'Nuevo
-        '
-        Me.Nuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Nuevo.Image = Global.OficialiadePartes.My.Resources.Resources.Add_32x32
-        Me.Nuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Nuevo.Name = "Nuevo"
-        Me.Nuevo.Size = New System.Drawing.Size(36, 36)
-        Me.Nuevo.Text = "Nuevo"
-        Me.Nuevo.ToolTipText = "Nuevo"
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = Global.OficialiadePartes.My.Resources.Resources.Edit_32x32
-        Me.ToolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton2.Text = "Editar"
-        '
-        'ToolStripButton4
-        '
-        Me.ToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton4.Image = Global.OficialiadePartes.My.Resources.Resources.Delete_32x32
-        Me.ToolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton4.Text = "Borrar"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
-        '
-        'ToolStripTextBox1
-        '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(250, 39)
-        '
-        'ToolStripButton3
-        '
-        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton3.Image = Global.OficialiadePartes.My.Resources.Resources.Search_32x32
-        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton3.Text = "Buscar"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
-        '
-        'ToolStripButton5
-        '
-        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton5.Image = Global.OficialiadePartes.My.Resources.Resources.Log_Out_32x32
-        Me.ToolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton5.Text = "Exit"
-        '
-        'CorrespondenciaDataSet
-        '
-        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DocumentoBindingSource
-        '
-        Me.DocumentoBindingSource.DataMember = "Documento"
-        Me.DocumentoBindingSource.DataSource = Me.CorrespondenciaDataSet
-        '
-        'DocumentoTableAdapter
-        '
-        Me.DocumentoTableAdapter.ClearBeforeFill = True
         '
         'IdDocumentoDataGridViewTextBoxColumn
         '
@@ -253,6 +166,115 @@ Partial Class Correspondencia
         Me.PDFDataGridViewImageColumn.Name = "PDFDataGridViewImageColumn"
         Me.PDFDataGridViewImageColumn.ReadOnly = True
         '
+        'DocumentoBindingSource
+        '
+        Me.DocumentoBindingSource.DataMember = "Documento"
+        Me.DocumentoBindingSource.DataSource = Me.CorrespondenciaDataSet
+        '
+        'CorrespondenciaDataSet
+        '
+        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
+        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Nuevo, Me.Button_Edita, Me.Button_Correo, Me.Button_PDF, Me.Button_Borrar, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
+        Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(559, 39)
+        Me.ToolStrip1.TabIndex = 0
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        '
+        'ToolStripTextBox1
+        '
+        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(250, 39)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
+        'DocumentoTableAdapter
+        '
+        Me.DocumentoTableAdapter.ClearBeforeFill = True
+        '
+        'Nuevo
+        '
+        Me.Nuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Nuevo.Image = Global.OficialiadePartes.My.Resources.Resources.Add_32x32
+        Me.Nuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Nuevo.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Nuevo.Name = "Nuevo"
+        Me.Nuevo.Size = New System.Drawing.Size(36, 36)
+        Me.Nuevo.Text = "Nuevo"
+        Me.Nuevo.ToolTipText = "Nuevo"
+        '
+        'Button_Edita
+        '
+        Me.Button_Edita.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Button_Edita.Image = Global.OficialiadePartes.My.Resources.Resources.Edit_32x32
+        Me.Button_Edita.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Button_Edita.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Button_Edita.Name = "Button_Edita"
+        Me.Button_Edita.Size = New System.Drawing.Size(36, 36)
+        Me.Button_Edita.Text = "Editar"
+        '
+        'Button_Correo
+        '
+        Me.Button_Correo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Button_Correo.Image = Global.OficialiadePartes.My.Resources.Resources.Forward_32x32
+        Me.Button_Correo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Button_Correo.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Button_Correo.Name = "Button_Correo"
+        Me.Button_Correo.Size = New System.Drawing.Size(36, 36)
+        Me.Button_Correo.Text = "Reenviar Correo"
+        '
+        'Button_Borrar
+        '
+        Me.Button_Borrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Button_Borrar.Image = Global.OficialiadePartes.My.Resources.Resources.Delete_32x32
+        Me.Button_Borrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Button_Borrar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Button_Borrar.Name = "Button_Borrar"
+        Me.Button_Borrar.Size = New System.Drawing.Size(36, 36)
+        Me.Button_Borrar.Text = "Borrar"
+        '
+        'ToolStripButton3
+        '
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton3.Image = Global.OficialiadePartes.My.Resources.Resources.Search_32x32
+        Me.ToolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton3.Text = "Buscar"
+        '
+        'ToolStripButton5
+        '
+        Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton5.Image = Global.OficialiadePartes.My.Resources.Resources.Log_Out_32x32
+        Me.ToolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton5.Name = "ToolStripButton5"
+        Me.ToolStripButton5.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton5.Text = "Exit"
+        '
+        'Button_PDF
+        '
+        Me.Button_PDF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Button_PDF.Image = Global.OficialiadePartes.My.Resources.Resources.Adobe_32x32
+        Me.Button_PDF.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Button_PDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Button_PDF.Name = "Button_PDF"
+        Me.Button_PDF.Size = New System.Drawing.Size(36, 36)
+        Me.Button_PDF.Text = "ToolStripButton6"
+        '
         'Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -271,10 +293,10 @@ Partial Class Correspondencia
         Me.ToolStripContainer1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -284,8 +306,8 @@ Partial Class Correspondencia
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Nuevo As ToolStripButton
-    Friend WithEvents ToolStripButton2 As ToolStripButton
-    Friend WithEvents ToolStripButton4 As ToolStripButton
+    Friend WithEvents Button_Edita As ToolStripButton
+    Friend WithEvents Button_Borrar As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox
     Friend WithEvents ToolStripButton3 As ToolStripButton
@@ -303,4 +325,6 @@ Partial Class Correspondencia
     Friend WithEvents RemitenteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DestinatarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PDFDataGridViewImageColumn As DataGridViewImageColumn
+    Friend WithEvents Button_Correo As ToolStripButton
+    Friend WithEvents Button_PDF As ToolStripButton
 End Class

@@ -25,6 +25,8 @@ Partial Class Secretarias_y_Dependencias
         Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.DependenciasBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CorrespondenciaDataSet2 = New OficialiadePartes.CorrespondenciaDataSet()
         Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -37,15 +39,13 @@ Partial Class Secretarias_y_Dependencias
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox_Nombre = New System.Windows.Forms.TextBox()
         Me.Button_Salir = New System.Windows.Forms.Button()
-        Me.CorrespondenciaDataSet2 = New OficialiadePartes.CorrespondenciaDataSet()
-        Me.DependenciasBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DependenciasTableAdapter2 = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
+        CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -66,6 +66,16 @@ Partial Class Secretarias_y_Dependencias
         Me.ComboBox1.Size = New System.Drawing.Size(502, 21)
         Me.ComboBox1.TabIndex = 4
         Me.ComboBox1.ValueMember = "Id_Dependencia"
+        '
+        'DependenciasBindingSource2
+        '
+        Me.DependenciasBindingSource2.DataMember = "Dependencias"
+        Me.DependenciasBindingSource2.DataSource = Me.CorrespondenciaDataSet2
+        '
+        'CorrespondenciaDataSet2
+        '
+        Me.CorrespondenciaDataSet2.DataSetName = "CorrespondenciaDataSet"
+        Me.CorrespondenciaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Button1
         '
@@ -174,16 +184,6 @@ Partial Class Secretarias_y_Dependencias
         Me.Button_Salir.Text = "Salir"
         Me.Button_Salir.UseVisualStyleBackColor = True
         '
-        'CorrespondenciaDataSet2
-        '
-        Me.CorrespondenciaDataSet2.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DependenciasBindingSource2
-        '
-        Me.DependenciasBindingSource2.DataMember = "Dependencias"
-        Me.DependenciasBindingSource2.DataSource = Me.CorrespondenciaDataSet2
-        '
         'DependenciasTableAdapter2
         '
         Me.DependenciasTableAdapter2.ClearBeforeFill = True
@@ -193,21 +193,23 @@ Partial Class Secretarias_y_Dependencias
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(637, 421)
+        Me.ControlBox = False
         Me.Controls.Add(Me.Button_Salir)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label1)
         Me.Name = "Secretarias_y_Dependencias"
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Secretarias y Dependencias"
+        CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

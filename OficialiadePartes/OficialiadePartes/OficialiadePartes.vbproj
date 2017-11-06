@@ -239,5 +239,8 @@
   <ItemGroup>
     <Folder Include="Modulos\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adobe 32x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

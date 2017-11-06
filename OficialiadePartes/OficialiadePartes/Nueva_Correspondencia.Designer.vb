@@ -295,7 +295,7 @@ Partial Class Nueva_Correspondencia
         Me.Controls.Add(Me.TextBoxNumOficio)
         Me.Name = "Nueva_Correspondencia"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "| "
+        Me.Text = "Nuevo Oficio"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

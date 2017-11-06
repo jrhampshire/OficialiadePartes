@@ -2,11 +2,21 @@
 Imports System.Data
 Imports System.Data.SqlClient
 Imports System.IO
+Imports System.Configuration
+Imports System.IO.Compression
+Imports System.Net.Mail
 
 
 Public Class Nueva_Correspondencia
     Dim SQL_Str As String = Nothing
     Dim Cx As New SqlConnection(My.Settings.Cadena)
+    Dim _Oficio As New Oficio
+
+    Dim Archivo As String = Nothing
+    Dim ArchivoZip As String = Nothing
+    Dim Destino As String = Nothing
+    Dim Destino2 As String = Nothing
+
     Private Sub Nueva_Correspondencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Personas' Puede moverla o quitarla según sea necesario.
         Me.PersonasTableAdapter.Fill(Me.CorrespondenciaDataSet.Personas)
@@ -52,26 +62,20 @@ Public Class Nueva_Correspondencia
     End Sub
 
     Private Sub Button_CargaDocumento_Click(sender As Object, e As EventArgs) Handles Button_CargaDocumento.Click
-        ' Call ShowDialog.
-        Dim result As DialogResult = OpenFileDialog1.ShowDialog()
-
-        ' Test result.
-        If result = Windows.Forms.DialogResult.OK Then
-
-            ' Get the file name.
-            Dim path As String = OpenFileDialog1.FileName
+        Dim myStream As String = Nothing
+        Dim openFileDialog1 As New OpenFileDialog()
+        openFileDialog1.InitialDirectory = "c:\"
+        openFileDialog1.Filter = "Archivos PDF (*.pdf)|*.pdf"
+        openFileDialog1.FilterIndex = 2
+        openFileDialog1.RestoreDirectory = True
+        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Try
-                ' Read in text.
-                Dim text As String = File.ReadAllText(path)
-
-                ' For debugging.
-                Me.Text = text.Length.ToString
-
+                myStream = openFileDialog1.FileName
+                If (myStream IsNot Nothing) Then
+                    TextBox_Documento.Text = myStream.ToString
+                End If
             Catch ex As Exception
-
-                ' Report an error.
-                Me.Text = "Error"
-
+                MessageBox.Show("No se puede leer el archivo indicado. Error:" & ex.Message)
             End Try
         End If
 
@@ -92,7 +96,92 @@ Public Class Nueva_Correspondencia
         _Oficio.Asunto = TextBox_Oficio.Text
         _Oficio.Observaciones = TextBox_Observaciones.Text
         _Oficio.Path = TextBox_Documento.Text
+        Dim PDF_Bytes As Byte()
+        If File.Exists(_Oficio.Path) Then
+            PDF_Bytes = File.ReadAllBytes(_Oficio.Path)
+            SQL_Str = "Insert into Documento (NumeroOficio, FechaOficio, FechaRecepcion, Asunto, Observaciones, Remitente, Destinatario, PDF)" &
+                "Values (@NumeroOficio, @FechaOficio, @FechaRecepcion, @Asunto, @Observaciones, @Remitente, @Destinatario, @PDF)"
+            Dim Cmd As New SqlCommand
+            Try
+                Cmd.CommandType = CommandType.Text
+                Cmd.CommandText = SQL_Str
+                Cmd.Parameters.AddWithValue("@NumeroOficio", _Oficio.NumOficio)
+                Cmd.Parameters.AddWithValue("@FechaOficio", _Oficio.FechaOficio)
+                Cmd.Parameters.AddWithValue("@FechaRecepcion", _Oficio.FechaRecepcion)
+                Cmd.Parameters.AddWithValue("@Asunto", _Oficio.Asunto)
+                Cmd.Parameters.AddWithValue("@Observaciones", _Oficio.Observaciones)
+                Cmd.Parameters.AddWithValue("@Remitente", _Oficio.Remitente)
+                Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
+                Cmd.Parameters.AddWithValue("@PDF", PDF_Bytes)
+                Cmd.ExecuteNonQuery()
+                Envia_Mail()
 
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+        End If
+    End Sub
+    Private Sub Envia_Mail()
+        Try
+            Dim _Remite As String = "oficialiadepartes@promotoraslp.gob.mx"
+            Dim _Puerto As Integer = 587
+            Dim _Servidor As String = "geo.websitewelcome.com"
+            Dim _Usuario As String = "oficialiadepartes@promotoraslp.gob.mx"
+            If File.Exists(_Oficio.Path) Then
+                Dim ArchivosAdjuntos As New List(Of String)()
+                ArchivosAdjuntos.Add(_Oficio.Path)
+                enviarCorreoE(_Remite, _Oficio.Destinatario, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, AcceptButton)
+        End Try
+    End Sub
 
+    Public Sub enviarCorreoE(ByVal Remitente As String,
+                             ByVal Destinatario As String,
+                             ByVal Asunto As String,
+                             ByVal Cuerpo As String,
+                             ByVal RutaArchivos As List(Of String),
+                             ByVal ServidorSmtp As String,
+                             ByRef PuertoSmtp As Integer,
+                             Optional ByVal MostrarMensajeOk As Boolean = False)
+        Try
+            Dim smtpMail As New SmtpClient
+            Dim oMsg As New System.Net.Mail.MailMessage(Remitente, Destinatario, Asunto, Cuerpo)
+            oMsg.IsBodyHtml = True
+            Dim i As Integer = 0
+            Dim ruta As List(Of String) = New List(Of String)
+            If RutaArchivos.Count > 0 Then
+                While (i < RutaArchivos.Count)
+                    Dim sFile As String = RutaArchivos(i)
+                    Dim oAttch As Net.Mail.Attachment = New Net.Mail.Attachment(sFile, "")
+                    oMsg.Attachments.Add(oAttch)
+                    i = i + 1
+                End While
+            End If
+
+            smtpMail.Host = ServidorSmtp
+            smtpMail.Credentials = New System.Net.NetworkCredential(Remitente, "esm9708")
+            smtpMail.Port = PuertoSmtp
+            smtpMail.EnableSsl = True
+            smtpMail.Send(oMsg)
+            If MostrarMensajeOk Then
+                MsgBox("Mensaje enviado correctamente",
+                       MsgBoxStyle.Information)
+            End If
+
+        Catch ex As SmtpFailedRecipientException
+            If MostrarMensajeOk Then
+                MsgBox("Error: " & ex.Message & "   - Mensaje no enviado")
+            End If
+        Catch ex As SmtpException
+            If MostrarMensajeOk Then
+                MsgBox("Error: " & ex.Message & "   - Mensaje no enviado")
+            End If
+        Catch ex As Exception
+            If MostrarMensajeOk Then
+                MsgBox("Error: " & ex.Message & "   - Mensaje no enviado")
+            End If
+        End Try
     End Sub
 End Class
