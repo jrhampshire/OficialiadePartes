@@ -15,4 +15,19 @@
         frm.ShowDialog()
 
     End Sub
+
+    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim DirectorioInicio As String = Nothing
+        DirectorioInicio = System.AppDomain.CurrentDomain.BaseDirectory()
+
+        If Not My.Computer.FileSystem.DirectoryExists("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes") Then
+            My.Computer.FileSystem.CreateDirectory("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes")
+        End If
+        If Not My.Computer.FileSystem.DirectoryExists("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Reportes") Then
+            My.Computer.FileSystem.CreateDirectory("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Reportes")
+        End If
+        If Not My.Computer.FileSystem.DirectoryExists("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Archivos") Then
+            My.Computer.FileSystem.CreateDirectory("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Archivos")
+        End If
+    End Sub
 End Class

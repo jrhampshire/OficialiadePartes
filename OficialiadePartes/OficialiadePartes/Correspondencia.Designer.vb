@@ -22,41 +22,26 @@ Partial Class Correspondencia
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.IdDocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NumeroOficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaOficioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaRecepcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AsuntoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RemitenteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DestinatarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PDFDataGridViewImageColumn = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.DocumentoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.DocumentoTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DocumentoTableAdapter()
         Me.Nuevo = New System.Windows.Forms.ToolStripButton()
         Me.Button_Edita = New System.Windows.Forms.ToolStripButton()
         Me.Button_Correo = New System.Windows.Forms.ToolStripButton()
-        Me.Button_Borrar = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.Button_PDF = New System.Windows.Forms.ToolStripButton()
+        Me.Button_Borrar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DocumentoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -87,95 +72,6 @@ Partial Class Correspondencia
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Correspondencia Recibida"
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToOrderColumns = True
-        Me.DataGridView1.AutoGenerateColumns = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDocumentoDataGridViewTextBoxColumn, Me.NumeroOficioDataGridViewTextBoxColumn, Me.FechaOficioDataGridViewTextBoxColumn, Me.FechaRecepcionDataGridViewTextBoxColumn, Me.AsuntoDataGridViewTextBoxColumn, Me.ObservacionesDataGridViewTextBoxColumn, Me.RemitenteDataGridViewTextBoxColumn, Me.DestinatarioDataGridViewTextBoxColumn, Me.PDFDataGridViewImageColumn})
-        Me.DataGridView1.DataSource = Me.DocumentoBindingSource
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'IdDocumentoDataGridViewTextBoxColumn
-        '
-        Me.IdDocumentoDataGridViewTextBoxColumn.DataPropertyName = "Id_Documento"
-        Me.IdDocumentoDataGridViewTextBoxColumn.HeaderText = "Id_Documento"
-        Me.IdDocumentoDataGridViewTextBoxColumn.Name = "IdDocumentoDataGridViewTextBoxColumn"
-        Me.IdDocumentoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NumeroOficioDataGridViewTextBoxColumn
-        '
-        Me.NumeroOficioDataGridViewTextBoxColumn.DataPropertyName = "NumeroOficio"
-        Me.NumeroOficioDataGridViewTextBoxColumn.HeaderText = "NumeroOficio"
-        Me.NumeroOficioDataGridViewTextBoxColumn.Name = "NumeroOficioDataGridViewTextBoxColumn"
-        Me.NumeroOficioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaOficioDataGridViewTextBoxColumn
-        '
-        Me.FechaOficioDataGridViewTextBoxColumn.DataPropertyName = "FechaOficio"
-        Me.FechaOficioDataGridViewTextBoxColumn.HeaderText = "FechaOficio"
-        Me.FechaOficioDataGridViewTextBoxColumn.Name = "FechaOficioDataGridViewTextBoxColumn"
-        Me.FechaOficioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FechaRecepcionDataGridViewTextBoxColumn
-        '
-        Me.FechaRecepcionDataGridViewTextBoxColumn.DataPropertyName = "FechaRecepcion"
-        Me.FechaRecepcionDataGridViewTextBoxColumn.HeaderText = "FechaRecepcion"
-        Me.FechaRecepcionDataGridViewTextBoxColumn.Name = "FechaRecepcionDataGridViewTextBoxColumn"
-        Me.FechaRecepcionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AsuntoDataGridViewTextBoxColumn
-        '
-        Me.AsuntoDataGridViewTextBoxColumn.DataPropertyName = "Asunto"
-        Me.AsuntoDataGridViewTextBoxColumn.HeaderText = "Asunto"
-        Me.AsuntoDataGridViewTextBoxColumn.Name = "AsuntoDataGridViewTextBoxColumn"
-        Me.AsuntoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ObservacionesDataGridViewTextBoxColumn
-        '
-        Me.ObservacionesDataGridViewTextBoxColumn.DataPropertyName = "Observaciones"
-        Me.ObservacionesDataGridViewTextBoxColumn.HeaderText = "Observaciones"
-        Me.ObservacionesDataGridViewTextBoxColumn.Name = "ObservacionesDataGridViewTextBoxColumn"
-        Me.ObservacionesDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RemitenteDataGridViewTextBoxColumn
-        '
-        Me.RemitenteDataGridViewTextBoxColumn.DataPropertyName = "Remitente"
-        Me.RemitenteDataGridViewTextBoxColumn.HeaderText = "Remitente"
-        Me.RemitenteDataGridViewTextBoxColumn.Name = "RemitenteDataGridViewTextBoxColumn"
-        Me.RemitenteDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DestinatarioDataGridViewTextBoxColumn
-        '
-        Me.DestinatarioDataGridViewTextBoxColumn.DataPropertyName = "Destinatario"
-        Me.DestinatarioDataGridViewTextBoxColumn.HeaderText = "Destinatario"
-        Me.DestinatarioDataGridViewTextBoxColumn.Name = "DestinatarioDataGridViewTextBoxColumn"
-        Me.DestinatarioDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PDFDataGridViewImageColumn
-        '
-        Me.PDFDataGridViewImageColumn.DataPropertyName = "PDF"
-        Me.PDFDataGridViewImageColumn.HeaderText = "PDF"
-        Me.PDFDataGridViewImageColumn.Name = "PDFDataGridViewImageColumn"
-        Me.PDFDataGridViewImageColumn.ReadOnly = True
-        '
-        'DocumentoBindingSource
-        '
-        Me.DocumentoBindingSource.DataMember = "Documento"
-        Me.DocumentoBindingSource.DataSource = Me.CorrespondenciaDataSet
-        '
-        'CorrespondenciaDataSet
-        '
-        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
@@ -184,25 +80,6 @@ Partial Class Correspondencia
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(559, 39)
         Me.ToolStrip1.TabIndex = 0
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
-        '
-        'ToolStripTextBox1
-        '
-        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
-        Me.ToolStripTextBox1.Size = New System.Drawing.Size(250, 39)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
-        '
-        'DocumentoTableAdapter
-        '
-        Me.DocumentoTableAdapter.ClearBeforeFill = True
         '
         'Nuevo
         '
@@ -235,6 +112,16 @@ Partial Class Correspondencia
         Me.Button_Correo.Size = New System.Drawing.Size(36, 36)
         Me.Button_Correo.Text = "Reenviar Correo"
         '
+        'Button_PDF
+        '
+        Me.Button_PDF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Button_PDF.Image = Global.OficialiadePartes.My.Resources.Resources.Adobe_32x32
+        Me.Button_PDF.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.Button_PDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Button_PDF.Name = "Button_PDF"
+        Me.Button_PDF.Size = New System.Drawing.Size(36, 36)
+        Me.Button_PDF.Text = "ToolStripButton6"
+        '
         'Button_Borrar
         '
         Me.Button_Borrar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -244,6 +131,16 @@ Partial Class Correspondencia
         Me.Button_Borrar.Name = "Button_Borrar"
         Me.Button_Borrar.Size = New System.Drawing.Size(36, 36)
         Me.Button_Borrar.Text = "Borrar"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
+        '
+        'ToolStripTextBox1
+        '
+        Me.ToolStripTextBox1.Name = "ToolStripTextBox1"
+        Me.ToolStripTextBox1.Size = New System.Drawing.Size(250, 39)
         '
         'ToolStripButton3
         '
@@ -255,6 +152,11 @@ Partial Class Correspondencia
         Me.ToolStripButton3.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButton3.Text = "Buscar"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
+        '
         'ToolStripButton5
         '
         Me.ToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -265,15 +167,18 @@ Partial Class Correspondencia
         Me.ToolStripButton5.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButton5.Text = "Exit"
         '
-        'Button_PDF
+        'DataGridView1
         '
-        Me.Button_PDF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Button_PDF.Image = Global.OficialiadePartes.My.Resources.Resources.Adobe_32x32
-        Me.Button_PDF.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.Button_PDF.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Button_PDF.Name = "Button_PDF"
-        Me.Button_PDF.Size = New System.Drawing.Size(36, 36)
-        Me.Button_PDF.Text = "ToolStripButton6"
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
+        Me.DataGridView1.TabIndex = 0
         '
         'Correspondencia
         '
@@ -292,18 +197,15 @@ Partial Class Correspondencia
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DocumentoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents ToolStripContainer1 As ToolStripContainer
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Nuevo As ToolStripButton
     Friend WithEvents Button_Edita As ToolStripButton
@@ -313,18 +215,7 @@ Partial Class Correspondencia
     Friend WithEvents ToolStripButton3 As ToolStripButton
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripButton5 As ToolStripButton
-    Friend WithEvents CorrespondenciaDataSet As CorrespondenciaDataSet
-    Friend WithEvents DocumentoBindingSource As BindingSource
-    Friend WithEvents DocumentoTableAdapter As CorrespondenciaDataSetTableAdapters.DocumentoTableAdapter
-    Friend WithEvents IdDocumentoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents NumeroOficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FechaOficioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FechaRecepcionDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AsuntoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ObservacionesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents RemitenteDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DestinatarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PDFDataGridViewImageColumn As DataGridViewImageColumn
     Friend WithEvents Button_Correo As ToolStripButton
     Friend WithEvents Button_PDF As ToolStripButton
+    Friend WithEvents DataGridView1 As DataGridView
 End Class

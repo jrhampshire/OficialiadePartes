@@ -12,10 +12,10 @@ Public Class Nueva_Correspondencia
     Dim Cx As New SqlConnection(My.Settings.Cadena)
     Dim _Oficio As New Oficio
 
-    Dim Archivo As String = Nothing
-    Dim ArchivoZip As String = Nothing
-    Dim Destino As String = Nothing
-    Dim Destino2 As String = Nothing
+    'Dim Archivo As String = Nothing
+    'Dim ArchivoZip As String = Nothing
+    'Dim Destino As String = Nothing
+    'Dim Destino2 As String = Nothing
 
     Private Sub Nueva_Correspondencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Personas' Puede moverla o quitarla según sea necesario.
@@ -85,14 +85,18 @@ Public Class Nueva_Correspondencia
         Close()
 
     End Sub
-
+    ''' <summary>
+    ''' AQUI ME QUEDE FALTA LEER EL CORREO DEL DESTINATARIO DE LA BASE DE DATOS PARA PODER MANDAR EL EMAIL
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub Button_Aceptar_Click(sender As Object, e As EventArgs) Handles Button_Aceptar.Click
-        Dim _Oficio As New Oficio
+
         _Oficio.NumOficio = TextBoxNumOficio.Text
         _Oficio.FechaOficio = DateTimePicker.Value
         _Oficio.FechaRecepcion = Now
-        _Oficio.Destinatario = ComboBox_Destinatario.SelectedText
-        _Oficio.Remitente = ComboBox_Remitente.SelectedText
+        _Oficio.Destinatario = ComboBox_Destinatario.Text
+        _Oficio.Remitente = ComboBox_Remitente.Text
         _Oficio.Asunto = TextBox_Oficio.Text
         _Oficio.Observaciones = TextBox_Observaciones.Text
         _Oficio.Path = TextBox_Documento.Text
@@ -101,10 +105,11 @@ Public Class Nueva_Correspondencia
             PDF_Bytes = File.ReadAllBytes(_Oficio.Path)
             SQL_Str = "Insert into Documento (NumeroOficio, FechaOficio, FechaRecepcion, Asunto, Observaciones, Remitente, Destinatario, PDF)" &
                 "Values (@NumeroOficio, @FechaOficio, @FechaRecepcion, @Asunto, @Observaciones, @Remitente, @Destinatario, @PDF)"
-            Dim Cmd As New SqlCommand
+
             Try
+                Dim Cmd As New SqlCommand(SQL_Str, Cx)
+                Cx.Open()
                 Cmd.CommandType = CommandType.Text
-                Cmd.CommandText = SQL_Str
                 Cmd.Parameters.AddWithValue("@NumeroOficio", _Oficio.NumOficio)
                 Cmd.Parameters.AddWithValue("@FechaOficio", _Oficio.FechaOficio)
                 Cmd.Parameters.AddWithValue("@FechaRecepcion", _Oficio.FechaRecepcion)
@@ -114,11 +119,33 @@ Public Class Nueva_Correspondencia
                 Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
                 Cmd.Parameters.AddWithValue("@PDF", PDF_Bytes)
                 Cmd.ExecuteNonQuery()
-                Envia_Mail()
 
+
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                If Cx.State = ConnectionState.Open Then
+                    Cx.Close()
+                End If
+                Close()
             End Try
+
+            Try
+
+            Catch ex As SqlException
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                If Cx.State = ConnectionState.Open Then
+                    Cx.Close()
+                End If
+                Close()
+
+            End Try
+            Envia_Mail()
         End If
     End Sub
     Private Sub Envia_Mail()
