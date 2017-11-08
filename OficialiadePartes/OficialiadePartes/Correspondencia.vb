@@ -15,13 +15,12 @@ Public Class Correspondencia
 #End Region
     Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
         Close()
-
     End Sub
 
     Private Sub Nuevo_Click(sender As Object, e As EventArgs) Handles Nuevo.Click
         Dim Frm As New Nueva_Correspondencia
         Frm.ShowDialog()
-
+        Carga_Datos()
     End Sub
 
     Private Sub Correspondencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -150,7 +150,7 @@ Public Class Nueva_Correspondencia
                 If Cx.State = ConnectionState.Open Then
                     Cx.Close()
                 End If
-                Close()
+
             End Try
 
             Try
@@ -163,11 +163,10 @@ Public Class Nueva_Correspondencia
                 If Cx.State = ConnectionState.Open Then
                     Cx.Close()
                 End If
-                Close()
-
             End Try
 
             Envia_Mail()
+            Close()
         End If
     End Sub
 
