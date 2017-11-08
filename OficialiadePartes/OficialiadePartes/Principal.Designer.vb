@@ -31,13 +31,9 @@ Partial Class Principal
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CatalogosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SecretariasYDependenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OficiosPorDepartamentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ManualDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.SolicitarAsistenciaRemotaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportarUnErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -65,7 +61,7 @@ Partial Class Principal
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.EditarToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.EditarToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(915, 24)
@@ -118,32 +114,12 @@ Partial Class Principal
         Me.SecretariasYDependenciasToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
         Me.SecretariasYDependenciasToolStripMenuItem.Text = "Secretarías y Dependencias"
         '
-        'ReportesToolStripMenuItem
-        '
-        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OficiosPorDepartamentoToolStripMenuItem})
-        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
-        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
-        Me.ReportesToolStripMenuItem.Text = "Reportes"
-        '
-        'OficiosPorDepartamentoToolStripMenuItem
-        '
-        Me.OficiosPorDepartamentoToolStripMenuItem.Name = "OficiosPorDepartamentoToolStripMenuItem"
-        Me.OficiosPorDepartamentoToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.OficiosPorDepartamentoToolStripMenuItem.Text = "Oficios por Departamento"
-        '
         'AyudaToolStripMenuItem
         '
-        Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ManualDeUsuarioToolStripMenuItem, Me.ToolStripMenuItem1, Me.SolicitarAsistenciaRemotaToolStripMenuItem, Me.ReportarUnErrorToolStripMenuItem, Me.ToolStripMenuItem2, Me.AcercaDeToolStripMenuItem})
+        Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.SolicitarAsistenciaRemotaToolStripMenuItem, Me.ToolStripMenuItem2, Me.AcercaDeToolStripMenuItem})
         Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
         Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
         Me.AyudaToolStripMenuItem.Text = "Ayuda"
-        '
-        'ManualDeUsuarioToolStripMenuItem
-        '
-        Me.ManualDeUsuarioToolStripMenuItem.Image = Global.OficialiadePartes.My.Resources.Resources.Help_16x16
-        Me.ManualDeUsuarioToolStripMenuItem.Name = "ManualDeUsuarioToolStripMenuItem"
-        Me.ManualDeUsuarioToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.ManualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario"
         '
         'ToolStripMenuItem1
         '
@@ -156,12 +132,6 @@ Partial Class Principal
         Me.SolicitarAsistenciaRemotaToolStripMenuItem.Name = "SolicitarAsistenciaRemotaToolStripMenuItem"
         Me.SolicitarAsistenciaRemotaToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
         Me.SolicitarAsistenciaRemotaToolStripMenuItem.Text = "Solicitar Asistencia Remota"
-        '
-        'ReportarUnErrorToolStripMenuItem
-        '
-        Me.ReportarUnErrorToolStripMenuItem.Name = "ReportarUnErrorToolStripMenuItem"
-        Me.ReportarUnErrorToolStripMenuItem.Size = New System.Drawing.Size(216, 22)
-        Me.ReportarUnErrorToolStripMenuItem.Text = "Reportar un Error"
         '
         'ToolStripMenuItem2
         '
@@ -181,10 +151,12 @@ Partial Class Principal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(915, 581)
         Me.Controls.Add(Me.ToolStripContainer1)
+        Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "Principal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Oficialia de Partes"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ToolStripContainer1.TopToolStripPanel.ResumeLayout(False)
         Me.ToolStripContainer1.TopToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ResumeLayout(False)
@@ -202,13 +174,9 @@ Partial Class Principal
     Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CatalogosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SecretariasYDependenciasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OficiosPorDepartamentoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AyudaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ManualDeUsuarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
     Friend WithEvents SolicitarAsistenciaRemotaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ReportarUnErrorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripSeparator
     Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As ToolStripSeparator

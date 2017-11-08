@@ -24,9 +24,9 @@ Partial Class Correspondencia
     Private Sub InitializeComponent()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.Nuevo = New System.Windows.Forms.ToolStripButton()
-        Me.Button_Edita = New System.Windows.Forms.ToolStripButton()
         Me.Button_Correo = New System.Windows.Forms.ToolStripButton()
         Me.Button_PDF = New System.Windows.Forms.ToolStripButton()
         Me.Button_Borrar = New System.Windows.Forms.ToolStripButton()
@@ -35,13 +35,12 @@ Partial Class Correspondencia
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.ToolStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStripContainer1
@@ -72,13 +71,26 @@ Partial Class Correspondencia
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Correspondencia Recibida"
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
+        Me.DataGridView1.TabIndex = 0
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Nuevo, Me.Button_Edita, Me.Button_Correo, Me.Button_PDF, Me.Button_Borrar, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Nuevo, Me.Button_Correo, Me.Button_PDF, Me.Button_Borrar, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(559, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(523, 39)
         Me.ToolStrip1.TabIndex = 0
         '
         'Nuevo
@@ -91,16 +103,6 @@ Partial Class Correspondencia
         Me.Nuevo.Size = New System.Drawing.Size(36, 36)
         Me.Nuevo.Text = "Nuevo"
         Me.Nuevo.ToolTipText = "Nuevo"
-        '
-        'Button_Edita
-        '
-        Me.Button_Edita.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Button_Edita.Image = Global.OficialiadePartes.My.Resources.Resources.Edit_32x32
-        Me.Button_Edita.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.Button_Edita.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Button_Edita.Name = "Button_Edita"
-        Me.Button_Edita.Size = New System.Drawing.Size(36, 36)
-        Me.Button_Edita.Text = "Editar"
         '
         'Button_Correo
         '
@@ -167,19 +169,6 @@ Partial Class Correspondencia
         Me.ToolStripButton5.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButton5.Text = "Exit"
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToOrderColumns = True
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
-        Me.DataGridView1.TabIndex = 0
-        '
         'Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -197,9 +186,9 @@ Partial Class Correspondencia
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -208,7 +197,6 @@ Partial Class Correspondencia
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Nuevo As ToolStripButton
-    Friend WithEvents Button_Edita As ToolStripButton
     Friend WithEvents Button_Borrar As ToolStripButton
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripTextBox1 As ToolStripTextBox

@@ -1,4 +1,6 @@
-﻿Public Class Principal
+﻿Imports System.IO
+
+Public Class Principal
     Private Sub SalirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalirToolStripMenuItem.Click
         End
 
@@ -29,5 +31,26 @@
         If Not My.Computer.FileSystem.DirectoryExists("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Archivos") Then
             My.Computer.FileSystem.CreateDirectory("\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Archivos")
         End If
+    End Sub
+
+    Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
+        Dim frm As New AboutBox
+        frm.ShowDialog()
+
+    End Sub
+
+    Private Sub SolicitarAsistenciaRemotaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SolicitarAsistenciaRemotaToolStripMenuItem.Click
+        Try
+            If File.Exists("c:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe") Then
+                Process.Start("c:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe")
+            ElseIf File.Exists("c:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe") Then
+                Process.Start("c:\Program Files (x86)\TeamViewer\Version9\TeamViewer.exe")
+            Else
+                MsgBox("Para poder acceder al soporte remoto debe de tener instalado TeamViewer en su equipo", "Error", MessageBoxButtons.OK)
+                Exit Sub
+            End If
+        Catch ex As Exception
+            Exit Sub
+        End Try
     End Sub
 End Class

@@ -68,7 +68,7 @@ Public Class Correspondencia
             pr.Close()
             My.Computer.FileSystem.DeleteFile(vFilename)
         Catch ex As Exception
-            MessageBox.Show(ex.Message + " No se puede abrir el documento " & vFilename, "Error")
+            ' MessageBox.Show(ex.Message + " No se puede abrir el documento " & vFilename, "Error")
         End Try
     End Sub
 
@@ -114,7 +114,10 @@ Public Class Correspondencia
 
                     End While
                     _Oficio.Path = "\\SRVPROMOEDO-5\Compartido\Oficialia_de_Partes\Archivos\Oficio_" & _Oficio.NumOficio & ".pdf"
-                    BytesAArchivo(bytes, _Oficio.Path)
+                    If Not File.Exists(_Oficio.Path) Then
+                        BytesAArchivo(bytes, _Oficio.Path)
+                    End If
+
 
                 End If
             End If
@@ -132,7 +135,7 @@ Public Class Correspondencia
     End Sub
     Private Sub Envia_Mail()
         GeneraPDF()
-
+        leerEmail()
         Try
             Dim _Remite As String = "oficialiadepartes@promotoraslp.gob.mx"
             Dim _Puerto As Integer = 587
@@ -141,13 +144,35 @@ Public Class Correspondencia
             If File.Exists(_Oficio.Path) Then
                 Dim ArchivosAdjuntos As New List(Of String)()
                 ArchivosAdjuntos.Add(_Oficio.Path)
-                enviarCorreoE(_Remite, _Oficio.Destinatario, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
+                enviarCorreoE(_Remite, _Oficio.email, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, AcceptButton)
         End Try
     End Sub
-
+    Private Sub leerEmail()
+        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona = @Destinatario"
+        Try
+            Cx.Open()
+            Dim Cmd As New SqlCommand(SQL_Str, Cx)
+            Cmd.CommandType = CommandType.Text
+            Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
+            Dim Reader As SqlDataReader = Cmd.ExecuteReader(CommandBehavior.CloseConnection)
+            With Reader
+                If .HasRows Then
+                    While .Read
+                        _Oficio.email = .Item("email")
+                    End While
+                End If
+            End With
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MessageBoxIcon.Error, MessageBoxButtons.OK)
+        Finally
+            If Cx.State = ConnectionState.Open Then
+                Cx.Close()
+            End If
+        End Try
+    End Sub
     Public Sub enviarCorreoE(ByVal Remitente As String,
                              ByVal Destinatario As String,
                              ByVal Asunto As String,
@@ -195,7 +220,6 @@ Public Class Correspondencia
             End If
         End Try
     End Sub
-
     Private Sub Button_Borrar_Click(sender As Object, e As EventArgs) Handles Button_Borrar.Click
         SQL_Str = "UPDATE Documento Set Activo = 0 WHERE Id_Documento = @Id_Doc"
         Dim Id_Doc As Integer = 0
@@ -218,7 +242,7 @@ Public Class Correspondencia
                     Cmd.CommandType = CommandType.Text
                     Cmd.Parameters.AddWithValue("@Id_Doc", Id_Doc)
                     Cmd.ExecuteNonQuery()
-                    Carga_Datos()
+
                 Catch ex As SqlException
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Exit Sub
@@ -230,6 +254,7 @@ Public Class Correspondencia
                         Cx.Close()
                     End If
                 End Try
+                Carga_Datos()
             End If
         Catch ex As Exception
             MessageBox.Show("Debe seleccionar un Equipo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -257,8 +282,29 @@ Public Class Correspondencia
             End If
         End Try
     End Sub
-
     Private Sub Button_Correo_Click(sender As Object, e As EventArgs) Handles Button_Correo.Click
+        Envia_Mail()
+    End Sub
 
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+        Dim Busqueda As String = Trim(ToolStripTextBox1.Text)
+        SQL_Str = "Select * from ListadoDocumentos Where Id_Documento in (Select Id_Documento from ViewInfo where Info like '%" & Busqueda & "%')"
+        Try
+            Cx.Open()
+            Dim DA As New SqlDataAdapter(SQL_Str, Cx)
+            Dim DS As New DataSet
+            DA.Fill(DS, "Tabla")
+            Me.DataGridView1.DataSource = DS.Tables("Tabla")
+        Catch ex As SqlException
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Finally
+            If Cx.State = ConnectionState.Open Then
+                Cx.Close()
+            End If
+        End Try
     End Sub
 End Class

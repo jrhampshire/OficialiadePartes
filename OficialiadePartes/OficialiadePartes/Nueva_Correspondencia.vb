@@ -166,11 +166,13 @@ Public Class Nueva_Correspondencia
                 Close()
 
             End Try
-            leerEmail()
+
             Envia_Mail()
         End If
     End Sub
+
     Private Sub Envia_Mail()
+        leerEmail()
         Try
             Dim _Remite As String = "oficialiadepartes@promotoraslp.gob.mx"
             Dim _Puerto As Integer = 587
@@ -179,7 +181,7 @@ Public Class Nueva_Correspondencia
             If File.Exists(_Oficio.Path) Then
                 Dim ArchivosAdjuntos As New List(Of String)()
                 ArchivosAdjuntos.Add(_Oficio.Path)
-                enviarCorreoE(_Remite, _Oficio.Destinatario, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
+                enviarCorreoE(_Remite, _Oficio.email, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, AcceptButton)
@@ -232,5 +234,18 @@ Public Class Nueva_Correspondencia
                 MsgBox("Error: " & ex.Message & "   - Mensaje no enviado")
             End If
         End Try
+    End Sub
+
+
+    Private Sub TextBoxNumOficio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxNumOficio.KeyPress
+
+        If e.KeyChar = "/" Then
+            e.KeyChar = ""
+        ElseIf e.KeyChar = "\" Then
+            e.KeyChar = ""
+        ElseIf e.KeyChar = "." Then
+            e.KeyChar = ""
+        End If
+
     End Sub
 End Class

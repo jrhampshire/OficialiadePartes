@@ -64,7 +64,7 @@ Partial Class Secretarias_y_Dependencias
         Me.ComboBox1.Location = New System.Drawing.Point(90, 10)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(502, 21)
-        Me.ComboBox1.TabIndex = 4
+        Me.ComboBox1.TabIndex = 0
         Me.ComboBox1.ValueMember = "Id_Dependencia"
         '
         'DependenciasBindingSource2

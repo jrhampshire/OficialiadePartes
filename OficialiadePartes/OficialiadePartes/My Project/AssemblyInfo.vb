@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("OficialiadePartes")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyTitle("Oficialia de Partes")>
+<Assembly: AssemblyDescription("Sistema de control de Oficialia de Partes")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("OficialiadePartes")>
 <Assembly: AssemblyCopyright("Copyright ©  2017")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTrademark("Todos los Derechos Reservados 2017")>
 
 <Assembly: ComVisible(False)>
 

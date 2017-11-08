@@ -23,7 +23,6 @@ Partial Class Nueva_Correspondencia
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.TextBoxNumOficio = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -50,18 +49,12 @@ Partial Class Nueva_Correspondencia
         Me.DependenciasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
         Me.PersonasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.PersonasTableAdapter()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.TextBoxNumOficio = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'TextBoxNumOficio
-        '
-        Me.TextBoxNumOficio.Location = New System.Drawing.Point(108, 16)
-        Me.TextBoxNumOficio.Name = "TextBoxNumOficio"
-        Me.TextBoxNumOficio.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxNumOficio.TabIndex = 0
         '
         'Label1
         '
@@ -86,7 +79,7 @@ Partial Class Nueva_Correspondencia
         Me.DateTimePicker.Location = New System.Drawing.Point(271, 15)
         Me.DateTimePicker.Name = "DateTimePicker"
         Me.DateTimePicker.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker.TabIndex = 3
+        Me.DateTimePicker.TabIndex = 1
         '
         'GroupBox1
         '
@@ -98,7 +91,7 @@ Partial Class Nueva_Correspondencia
         Me.GroupBox1.Location = New System.Drawing.Point(13, 36)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(458, 83)
-        Me.GroupBox1.TabIndex = 4
+        Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del Emisor"
         '
@@ -107,7 +100,7 @@ Partial Class Nueva_Correspondencia
         Me.Button_NuevoEmisor.Location = New System.Drawing.Point(426, 47)
         Me.Button_NuevoEmisor.Name = "Button_NuevoEmisor"
         Me.Button_NuevoEmisor.Size = New System.Drawing.Size(26, 23)
-        Me.Button_NuevoEmisor.TabIndex = 16
+        Me.Button_NuevoEmisor.TabIndex = 2
         Me.Button_NuevoEmisor.Text = "..."
         Me.Button_NuevoEmisor.UseVisualStyleBackColor = True
         '
@@ -117,7 +110,7 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Remitente.Location = New System.Drawing.Point(52, 49)
         Me.ComboBox_Remitente.Name = "ComboBox_Remitente"
         Me.ComboBox_Remitente.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox_Remitente.TabIndex = 3
+        Me.ComboBox_Remitente.TabIndex = 1
         '
         'Label4
         '
@@ -136,7 +129,7 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Dependencia.Location = New System.Drawing.Point(84, 17)
         Me.ComboBox_Dependencia.Name = "ComboBox_Dependencia"
         Me.ComboBox_Dependencia.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox_Dependencia.TabIndex = 1
+        Me.ComboBox_Dependencia.TabIndex = 0
         Me.ComboBox_Dependencia.ValueMember = "Id_Dependencia"
         '
         'DependenciasBindingSource
@@ -172,7 +165,7 @@ Partial Class Nueva_Correspondencia
         Me.TextBox_Oficio.Location = New System.Drawing.Point(107, 173)
         Me.TextBox_Oficio.Name = "TextBox_Oficio"
         Me.TextBox_Oficio.Size = New System.Drawing.Size(364, 20)
-        Me.TextBox_Oficio.TabIndex = 6
+        Me.TextBox_Oficio.TabIndex = 4
         '
         'Label6
         '
@@ -189,7 +182,7 @@ Partial Class Nueva_Correspondencia
         Me.TextBox_Observaciones.Multiline = True
         Me.TextBox_Observaciones.Name = "TextBox_Observaciones"
         Me.TextBox_Observaciones.Size = New System.Drawing.Size(458, 97)
-        Me.TextBox_Observaciones.TabIndex = 8
+        Me.TextBox_Observaciones.TabIndex = 5
         '
         'ComboBox_Destinatario
         '
@@ -199,7 +192,7 @@ Partial Class Nueva_Correspondencia
         Me.ComboBox_Destinatario.Location = New System.Drawing.Point(82, 139)
         Me.ComboBox_Destinatario.Name = "ComboBox_Destinatario"
         Me.ComboBox_Destinatario.Size = New System.Drawing.Size(389, 21)
-        Me.ComboBox_Destinatario.TabIndex = 12
+        Me.ComboBox_Destinatario.TabIndex = 3
         '
         'PersonasBindingSource
         '
@@ -229,14 +222,14 @@ Partial Class Nueva_Correspondencia
         Me.TextBox_Documento.Location = New System.Drawing.Point(135, 330)
         Me.TextBox_Documento.Name = "TextBox_Documento"
         Me.TextBox_Documento.Size = New System.Drawing.Size(298, 20)
-        Me.TextBox_Documento.TabIndex = 14
+        Me.TextBox_Documento.TabIndex = 6
         '
         'Button_CargaDocumento
         '
         Me.Button_CargaDocumento.Location = New System.Drawing.Point(445, 328)
         Me.Button_CargaDocumento.Name = "Button_CargaDocumento"
         Me.Button_CargaDocumento.Size = New System.Drawing.Size(26, 23)
-        Me.Button_CargaDocumento.TabIndex = 15
+        Me.Button_CargaDocumento.TabIndex = 7
         Me.Button_CargaDocumento.Text = "..."
         Me.Button_CargaDocumento.UseVisualStyleBackColor = True
         '
@@ -245,7 +238,7 @@ Partial Class Nueva_Correspondencia
         Me.Button_Cancelar.Location = New System.Drawing.Point(396, 357)
         Me.Button_Cancelar.Name = "Button_Cancelar"
         Me.Button_Cancelar.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Cancelar.TabIndex = 16
+        Me.Button_Cancelar.TabIndex = 9
         Me.Button_Cancelar.Text = "Cancelar"
         Me.Button_Cancelar.UseVisualStyleBackColor = True
         '
@@ -254,7 +247,7 @@ Partial Class Nueva_Correspondencia
         Me.Button_Aceptar.Location = New System.Drawing.Point(315, 357)
         Me.Button_Aceptar.Name = "Button_Aceptar"
         Me.Button_Aceptar.Size = New System.Drawing.Size(75, 23)
-        Me.Button_Aceptar.TabIndex = 17
+        Me.Button_Aceptar.TabIndex = 8
         Me.Button_Aceptar.Text = "Aceptar"
         Me.Button_Aceptar.UseVisualStyleBackColor = True
         '
@@ -270,6 +263,13 @@ Partial Class Nueva_Correspondencia
         '
         Me.OpenFileDialog1.Filter = """Archivos PDF|*.pdf"""
         Me.OpenFileDialog1.Title = "Seleccione un archivo PDF"
+        '
+        'TextBoxNumOficio
+        '
+        Me.TextBoxNumOficio.Location = New System.Drawing.Point(108, 16)
+        Me.TextBoxNumOficio.Name = "TextBoxNumOficio"
+        Me.TextBoxNumOficio.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxNumOficio.TabIndex = 0
         '
         'Nueva_Correspondencia
         '
@@ -305,8 +305,6 @@ Partial Class Nueva_Correspondencia
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents TextBoxNumOficio As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents DateTimePicker As DateTimePicker
@@ -333,4 +331,5 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents PersonasBindingSource As BindingSource
     Friend WithEvents PersonasTableAdapter As CorrespondenciaDataSetTableAdapters.PersonasTableAdapter
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents TextBoxNumOficio As TextBox
 End Class
