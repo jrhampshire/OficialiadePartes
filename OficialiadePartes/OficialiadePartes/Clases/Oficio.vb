@@ -10,6 +10,7 @@
     Private _Asunto As String = Nothing
     Private _Observaciones As String = Nothing
     Private _Path As String = Nothing
+    Private _email As String = Nothing
 
     Property NumOficio As String
         Set(value As String)
@@ -91,9 +92,14 @@
             Return _Observaciones
         End Get
     End Property
-
-
-
+    Property email As String
+        Set(value As String)
+            _email = value
+        End Set
+        Get
+            Return _email
+        End Get
+    End Property
     Property Path As String
         Set(value As String)
             _Path = value

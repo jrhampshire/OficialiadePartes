@@ -85,11 +85,32 @@ Public Class Nueva_Correspondencia
         Close()
 
     End Sub
-    ''' <summary>
-    ''' AQUI ME QUEDE FALTA LEER EL CORREO DEL DESTINATARIO DE LA BASE DE DATOS PARA PODER MANDAR EL EMAIL
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
+
+    Private Sub leerEmail()
+        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona = @Destinatario"
+        Try
+            Cx.Open()
+            Dim Cmd As New SqlCommand(SQL_Str, Cx)
+            Cmd.CommandType = CommandType.Text
+            Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
+            Dim Reader As SqlDataReader = Cmd.ExecuteReader(CommandBehavior.CloseConnection)
+            With Reader
+                If .HasRows Then
+                    While .Read
+                        _Oficio.email = .Item("email")
+                    End While
+                End If
+            End With
+        Catch ex As Exception
+            MsgBox("Error: " & ex.Message, MessageBoxIcon.Error, MessageBoxButtons.OK)
+        Finally
+            If Cx.State = ConnectionState.Open Then
+                Cx.Close()
+            End If
+        End Try
+    End Sub
+
+
     Private Sub Button_Aceptar_Click(sender As Object, e As EventArgs) Handles Button_Aceptar.Click
 
         _Oficio.NumOficio = TextBoxNumOficio.Text
@@ -145,6 +166,7 @@ Public Class Nueva_Correspondencia
                 Close()
 
             End Try
+            leerEmail()
             Envia_Mail()
         End If
     End Sub
