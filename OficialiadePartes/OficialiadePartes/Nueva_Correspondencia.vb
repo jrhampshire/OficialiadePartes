@@ -12,22 +12,48 @@ Public Class Nueva_Correspondencia
     Dim Cx As New SqlConnection(My.Settings.Cadena)
     Dim _Oficio As New Oficio
 
-    'Dim Archivo As String = Nothing
-    'Dim ArchivoZip As String = Nothing
-    'Dim Destino As String = Nothing
-    'Dim Destino2 As String = Nothing
+
 
     Private Sub Nueva_Correspondencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Personas' Puede moverla o quitarla según sea necesario.
         Me.PersonasTableAdapter.Fill(Me.CorrespondenciaDataSet.Personas)
         'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Dependencias' Puede moverla o quitarla según sea necesario.
         Me.DependenciasTableAdapter.Fill(Me.CorrespondenciaDataSet.Dependencias)
-
+        Carga_Datos_EmpleadosPromo()
     End Sub
 
     Private Sub ComboBox_Dependencia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_Dependencia.SelectedIndexChanged
         Carga_Datos_Personal()
 
+    End Sub
+
+    Sub Carga_Datos_EmpleadosPromo()
+        Try
+
+            Dim DependenciaActual As Integer = ComboBox_Dependencia.SelectedValue
+                SQL_Str = "Select Persona from PersonaldelasDependencias Where id_Dependencia =2"
+            Cx.Open()
+            Dim Cmd As New SqlCommand(SQL_Str, Cx)
+            Cmd.CommandType = CommandType.Text
+            Dim Reader As SqlDataReader = Cmd.ExecuteReader(CommandBehavior.CloseConnection)
+            With Reader
+                If .HasRows Then
+                    While .Read
+                        CheckedListBox1.Items.Add(.Item("Persona"))
+                    End While
+                End If
+            End With
+        Catch ex As SqlException
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Finally
+            If Cx.State = ConnectionState.Open Then
+                Cx.Close()
+            End If
+        End Try
     End Sub
     Sub Carga_Datos_Personal()
         Try
@@ -86,13 +112,13 @@ Public Class Nueva_Correspondencia
 
     End Sub
 
-    Private Sub leerEmail()
-        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona = @Destinatario"
+    Private Sub leerEmail(ByVal Persona As String)
+        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona in (@Destinatario)"
         Try
             Cx.Open()
             Dim Cmd As New SqlCommand(SQL_Str, Cx)
             Cmd.CommandType = CommandType.Text
-            Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
+            Cmd.Parameters.AddWithValue("@Destinatario", Persona)
             Dim Reader As SqlDataReader = Cmd.ExecuteReader(CommandBehavior.CloseConnection)
             With Reader
                 If .HasRows Then
@@ -112,11 +138,28 @@ Public Class Nueva_Correspondencia
 
 
     Private Sub Button_Aceptar_Click(sender As Object, e As EventArgs) Handles Button_Aceptar.Click
+        Dim x As Integer
+        Dim s As String = ""
+        If CheckedListBox1.CheckedItems.Count <> 0 Then
+            ' If so, loop through all checked items and print results.
+            If CheckedListBox1.CheckedItems.Count = 1 Then
+                For x = 0 To CheckedListBox1.CheckedItems.Count - 1
+                    s = s & CheckedListBox1.CheckedItems(x).ToString
+                Next x
+            Else
+                s = CheckedListBox1.CheckedItems(0).ToString
+                For x = 1 To CheckedListBox1.CheckedItems.Count - 1
+                    s = s & "," & CheckedListBox1.CheckedItems(x).ToString
+                Next x
 
-        _Oficio.NumOficio = TextBoxNumOficio.Text
+            End If
+        End If
+
+
+            _Oficio.NumOficio = TextBoxNumOficio.Text
         _Oficio.FechaOficio = DateTimePicker.Value
         _Oficio.FechaRecepcion = Now
-        _Oficio.Destinatario = ComboBox_Destinatario.Text
+        _Oficio.Destinatario = s
         _Oficio.Remitente = ComboBox_Remitente.Text
         _Oficio.Asunto = TextBox_Oficio.Text
         _Oficio.Observaciones = TextBox_Observaciones.Text
@@ -171,7 +214,7 @@ Public Class Nueva_Correspondencia
     End Sub
 
     Private Sub Envia_Mail()
-        leerEmail()
+
         Try
             Dim _Remite As String = "oficialiadepartes@promotoraslp.gob.mx"
             Dim _Puerto As Integer = 587
@@ -180,7 +223,7 @@ Public Class Nueva_Correspondencia
             If File.Exists(_Oficio.Path) Then
                 Dim ArchivosAdjuntos As New List(Of String)()
                 ArchivosAdjuntos.Add(_Oficio.Path)
-                enviarCorreoE(_Remite, _Oficio.email, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
+                enviarCorreoE(_Remite, _Oficio.Destinatario, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, AcceptButton)
@@ -197,7 +240,14 @@ Public Class Nueva_Correspondencia
                              Optional ByVal MostrarMensajeOk As Boolean = False)
         Try
             Dim smtpMail As New SmtpClient
-            Dim oMsg As New System.Net.Mail.MailMessage(Remitente, Destinatario, Asunto, Cuerpo)
+            Dim oMsg As System.Net.Mail.MailMessage = New System.Net.Mail.MailMessage()
+            oMsg.From = New System.Net.Mail.MailAddress(Remitente)
+            For Each Persona As String In Destinatario.Split(",")
+                leerEmail(Persona)
+                oMsg.To.Add(New System.Net.Mail.MailAddress(_Oficio.email))
+            Next
+            oMsg.Subject = Asunto
+            oMsg.Body = Cuerpo
             oMsg.IsBodyHtml = True
             Dim i As Integer = 0
             Dim ruta As List(Of String) = New List(Of String)

@@ -137,7 +137,7 @@ Public Class Correspondencia
     End Sub
     Private Sub Envia_Mail()
         GeneraPDF()
-        leerEmail()
+
         Try
             Dim _Remite As String = "oficialiadepartes@promotoraslp.gob.mx"
             Dim _Puerto As Integer = 587
@@ -146,19 +146,19 @@ Public Class Correspondencia
             If File.Exists(_Oficio.Path) Then
                 Dim ArchivosAdjuntos As New List(Of String)()
                 ArchivosAdjuntos.Add(_Oficio.Path)
-                enviarCorreoE(_Remite, _Oficio.email, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
+                enviarCorreoE(_Remite, _Oficio.Destinatario, _Oficio.Asunto, _Oficio.Observaciones, ArchivosAdjuntos, _Servidor, _Puerto, True)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, AcceptButton)
         End Try
     End Sub
-    Private Sub leerEmail()
-        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona = @Destinatario"
+    Private Sub leerEmail(ByVal Persona As String)
+        SQL_Str = "Select email from PersonaldelasDependencias where id_Dependencia = 2 and Persona in (@Destinatario)"
         Try
             Cx.Open()
             Dim Cmd As New SqlCommand(SQL_Str, Cx)
             Cmd.CommandType = CommandType.Text
-            Cmd.Parameters.AddWithValue("@Destinatario", _Oficio.Destinatario)
+            Cmd.Parameters.AddWithValue("@Destinatario", Persona)
             Dim Reader As SqlDataReader = Cmd.ExecuteReader(CommandBehavior.CloseConnection)
             With Reader
                 If .HasRows Then
@@ -185,7 +185,15 @@ Public Class Correspondencia
                              Optional ByVal MostrarMensajeOk As Boolean = False)
         Try
             Dim smtpMail As New SmtpClient
-            Dim oMsg As New System.Net.Mail.MailMessage(Remitente, Destinatario, Asunto, Cuerpo)
+
+            Dim oMsg As System.Net.Mail.MailMessage = New System.Net.Mail.MailMessage()
+            oMsg.From = New System.Net.Mail.MailAddress(Remitente)
+            For Each Persona As String In Destinatario.Split(",")
+                leerEmail(Persona)
+                oMsg.To.Add(New System.Net.Mail.MailAddress(_Oficio.email))
+            Next
+            oMsg.Subject = Asunto
+            oMsg.Body = Cuerpo
             oMsg.IsBodyHtml = True
             Dim i As Integer = 0
             Dim ruta As List(Of String) = New List(Of String)

@@ -38,7 +38,6 @@ Partial Class Nueva_Correspondencia
         Me.TextBox_Oficio = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_Observaciones = New System.Windows.Forms.TextBox()
-        Me.ComboBox_Destinatario = New System.Windows.Forms.ComboBox()
         Me.PersonasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -50,6 +49,7 @@ Partial Class Nueva_Correspondencia
         Me.PersonasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.PersonasTableAdapter()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TextBoxNumOficio = New System.Windows.Forms.TextBox()
+        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -154,7 +154,7 @@ Partial Class Nueva_Correspondencia
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(13, 176)
+        Me.Label5.Location = New System.Drawing.Point(13, 225)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(87, 13)
         Me.Label5.TabIndex = 5
@@ -162,7 +162,7 @@ Partial Class Nueva_Correspondencia
         '
         'TextBox_Oficio
         '
-        Me.TextBox_Oficio.Location = New System.Drawing.Point(107, 173)
+        Me.TextBox_Oficio.Location = New System.Drawing.Point(107, 222)
         Me.TextBox_Oficio.Name = "TextBox_Oficio"
         Me.TextBox_Oficio.Size = New System.Drawing.Size(364, 20)
         Me.TextBox_Oficio.TabIndex = 4
@@ -170,7 +170,7 @@ Partial Class Nueva_Correspondencia
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(13, 208)
+        Me.Label6.Location = New System.Drawing.Point(13, 246)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(78, 13)
         Me.Label6.TabIndex = 7
@@ -178,21 +178,11 @@ Partial Class Nueva_Correspondencia
         '
         'TextBox_Observaciones
         '
-        Me.TextBox_Observaciones.Location = New System.Drawing.Point(13, 224)
+        Me.TextBox_Observaciones.Location = New System.Drawing.Point(13, 262)
         Me.TextBox_Observaciones.Multiline = True
         Me.TextBox_Observaciones.Name = "TextBox_Observaciones"
         Me.TextBox_Observaciones.Size = New System.Drawing.Size(458, 97)
         Me.TextBox_Observaciones.TabIndex = 5
-        '
-        'ComboBox_Destinatario
-        '
-        Me.ComboBox_Destinatario.DataSource = Me.PersonasBindingSource
-        Me.ComboBox_Destinatario.DisplayMember = "Persona"
-        Me.ComboBox_Destinatario.FormattingEnabled = True
-        Me.ComboBox_Destinatario.Location = New System.Drawing.Point(82, 139)
-        Me.ComboBox_Destinatario.Name = "ComboBox_Destinatario"
-        Me.ComboBox_Destinatario.Size = New System.Drawing.Size(389, 21)
-        Me.ComboBox_Destinatario.TabIndex = 3
         '
         'PersonasBindingSource
         '
@@ -202,16 +192,16 @@ Partial Class Nueva_Correspondencia
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(13, 142)
+        Me.Label7.Location = New System.Drawing.Point(13, 122)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(63, 13)
+        Me.Label7.Size = New System.Drawing.Size(74, 13)
         Me.Label7.TabIndex = 11
-        Me.Label7.Text = "Destinatario"
+        Me.Label7.Text = "Destinatario(s)"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(10, 333)
+        Me.Label8.Location = New System.Drawing.Point(10, 371)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(119, 13)
         Me.Label8.TabIndex = 13
@@ -219,14 +209,14 @@ Partial Class Nueva_Correspondencia
         '
         'TextBox_Documento
         '
-        Me.TextBox_Documento.Location = New System.Drawing.Point(135, 330)
+        Me.TextBox_Documento.Location = New System.Drawing.Point(135, 368)
         Me.TextBox_Documento.Name = "TextBox_Documento"
         Me.TextBox_Documento.Size = New System.Drawing.Size(298, 20)
         Me.TextBox_Documento.TabIndex = 6
         '
         'Button_CargaDocumento
         '
-        Me.Button_CargaDocumento.Location = New System.Drawing.Point(445, 328)
+        Me.Button_CargaDocumento.Location = New System.Drawing.Point(445, 366)
         Me.Button_CargaDocumento.Name = "Button_CargaDocumento"
         Me.Button_CargaDocumento.Size = New System.Drawing.Size(26, 23)
         Me.Button_CargaDocumento.TabIndex = 7
@@ -235,7 +225,7 @@ Partial Class Nueva_Correspondencia
         '
         'Button_Cancelar
         '
-        Me.Button_Cancelar.Location = New System.Drawing.Point(396, 357)
+        Me.Button_Cancelar.Location = New System.Drawing.Point(396, 395)
         Me.Button_Cancelar.Name = "Button_Cancelar"
         Me.Button_Cancelar.Size = New System.Drawing.Size(75, 23)
         Me.Button_Cancelar.TabIndex = 9
@@ -244,7 +234,7 @@ Partial Class Nueva_Correspondencia
         '
         'Button_Aceptar
         '
-        Me.Button_Aceptar.Location = New System.Drawing.Point(315, 357)
+        Me.Button_Aceptar.Location = New System.Drawing.Point(315, 395)
         Me.Button_Aceptar.Name = "Button_Aceptar"
         Me.Button_Aceptar.Size = New System.Drawing.Size(75, 23)
         Me.Button_Aceptar.TabIndex = 8
@@ -271,18 +261,26 @@ Partial Class Nueva_Correspondencia
         Me.TextBoxNumOficio.Size = New System.Drawing.Size(100, 20)
         Me.TextBoxNumOficio.TabIndex = 0
         '
+        'CheckedListBox1
+        '
+        Me.CheckedListBox1.FormattingEnabled = True
+        Me.CheckedListBox1.Location = New System.Drawing.Point(88, 122)
+        Me.CheckedListBox1.Name = "CheckedListBox1"
+        Me.CheckedListBox1.Size = New System.Drawing.Size(383, 94)
+        Me.CheckedListBox1.TabIndex = 14
+        '
         'Nueva_Correspondencia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(483, 392)
+        Me.ClientSize = New System.Drawing.Size(483, 430)
         Me.ControlBox = False
+        Me.Controls.Add(Me.CheckedListBox1)
         Me.Controls.Add(Me.Button_Aceptar)
         Me.Controls.Add(Me.Button_Cancelar)
         Me.Controls.Add(Me.Button_CargaDocumento)
         Me.Controls.Add(Me.TextBox_Documento)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.ComboBox_Destinatario)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TextBox_Observaciones)
         Me.Controls.Add(Me.Label6)
@@ -317,7 +315,6 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents TextBox_Oficio As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBox_Observaciones As TextBox
-    Friend WithEvents ComboBox_Destinatario As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBox_Documento As TextBox
@@ -332,4 +329,5 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents PersonasTableAdapter As CorrespondenciaDataSetTableAdapters.PersonasTableAdapter
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents TextBoxNumOficio As TextBox
+    Friend WithEvents CheckedListBox1 As CheckedListBox
 End Class
