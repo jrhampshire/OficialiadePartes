@@ -24,11 +24,18 @@ Partial Class Correspondencia
     Private Sub InitializeComponent()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DateTimePicker_FechaFin = New System.Windows.Forms.DateTimePicker()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.DateTimePicker_FechaInicio = New System.Windows.Forms.DateTimePicker()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton_Reload = New System.Windows.Forms.ToolStripButton()
         Me.Nuevo = New System.Windows.Forms.ToolStripButton()
         Me.Button_Correo = New System.Windows.Forms.ToolStripButton()
         Me.Button_PDF = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton_Exportar = New System.Windows.Forms.ToolStripButton()
         Me.Button_Borrar = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
@@ -39,6 +46,7 @@ Partial Class Correspondencia
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -63,13 +71,60 @@ Partial Class Correspondencia
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.DateTimePicker_FechaFin)
+        Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.DateTimePicker_FechaInicio)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(920, 541)
+        Me.GroupBox1.Size = New System.Drawing.Size(938, 550)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Correspondencia Recibida"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(212, 20)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(69, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Fecha de Fin"
+        '
+        'DateTimePicker_FechaFin
+        '
+        Me.DateTimePicker_FechaFin.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker_FechaFin.Location = New System.Drawing.Point(287, 14)
+        Me.DateTimePicker_FechaFin.Name = "DateTimePicker_FechaFin"
+        Me.DateTimePicker_FechaFin.Size = New System.Drawing.Size(96, 20)
+        Me.DateTimePicker_FechaFin.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(9, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(80, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Fecha de Inicio"
+        '
+        'DateTimePicker_FechaInicio
+        '
+        Me.DateTimePicker_FechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker_FechaInicio.Location = New System.Drawing.Point(95, 14)
+        Me.DateTimePicker_FechaInicio.Name = "DateTimePicker_FechaInicio"
+        Me.DateTimePicker_FechaInicio.Size = New System.Drawing.Size(96, 20)
+        Me.DateTimePicker_FechaInicio.TabIndex = 2
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.DataGridView1)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 46)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(923, 498)
+        Me.GroupBox2.TabIndex = 1
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Correspondencia Recibida"
         '
         'DataGridView1
         '
@@ -81,17 +136,27 @@ Partial Class Correspondencia
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(914, 522)
+        Me.DataGridView1.Size = New System.Drawing.Size(917, 479)
         Me.DataGridView1.TabIndex = 0
         '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Nuevo, Me.Button_Correo, Me.Button_PDF, Me.Button_Borrar, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton_Reload, Me.Nuevo, Me.Button_Correo, Me.Button_PDF, Me.ToolStripButton_Exportar, Me.Button_Borrar, Me.ToolStripSeparator1, Me.ToolStripTextBox1, Me.ToolStripButton3, Me.ToolStripSeparator2, Me.ToolStripButton5})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(523, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(595, 39)
         Me.ToolStrip1.TabIndex = 0
+        '
+        'ToolStripButton_Reload
+        '
+        Me.ToolStripButton_Reload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton_Reload.Image = Global.OficialiadePartes.My.Resources.Resources.Refresh_32x32
+        Me.ToolStripButton_Reload.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_Reload.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_Reload.Name = "ToolStripButton_Reload"
+        Me.ToolStripButton_Reload.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton_Reload.Text = "Volver a Cargar Informacion"
         '
         'Nuevo
         '
@@ -122,7 +187,17 @@ Partial Class Correspondencia
         Me.Button_PDF.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Button_PDF.Name = "Button_PDF"
         Me.Button_PDF.Size = New System.Drawing.Size(36, 36)
-        Me.Button_PDF.Text = "ToolStripButton6"
+        Me.Button_PDF.Text = "Abrir PDF"
+        '
+        'ToolStripButton_Exportar
+        '
+        Me.ToolStripButton_Exportar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton_Exportar.Image = Global.OficialiadePartes.My.Resources.Resources.Excel_32x32
+        Me.ToolStripButton_Exportar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_Exportar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_Exportar.Name = "ToolStripButton_Exportar"
+        Me.ToolStripButton_Exportar.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton_Exportar.Text = "Exportar a Excel"
         '
         'Button_Borrar
         '
@@ -186,6 +261,8 @@ Partial Class Correspondencia
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
@@ -194,7 +271,6 @@ Partial Class Correspondencia
     End Sub
 
     Friend WithEvents ToolStripContainer1 As ToolStripContainer
-    Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents Nuevo As ToolStripButton
     Friend WithEvents Button_Borrar As ToolStripButton
@@ -205,5 +281,13 @@ Partial Class Correspondencia
     Friend WithEvents ToolStripButton5 As ToolStripButton
     Friend WithEvents Button_Correo As ToolStripButton
     Friend WithEvents Button_PDF As ToolStripButton
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents DateTimePicker_FechaFin As DateTimePicker
+    Friend WithEvents Label1 As Label
+    Friend WithEvents DateTimePicker_FechaInicio As DateTimePicker
+    Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents ToolStripButton_Reload As ToolStripButton
+    Friend WithEvents ToolStripButton_Exportar As ToolStripButton
 End Class
