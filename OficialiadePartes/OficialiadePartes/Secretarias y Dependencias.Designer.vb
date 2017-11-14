@@ -61,6 +61,7 @@ Partial Class Secretarias_y_Dependencias
         '
         Me.ComboBox1.DataSource = Me.DependenciasBindingSource2
         Me.ComboBox1.DisplayMember = "Dependencia"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.Location = New System.Drawing.Point(90, 10)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(502, 21)
@@ -170,6 +171,7 @@ Partial Class Secretarias_y_Dependencias
         '
         'TextBox_Nombre
         '
+        Me.TextBox_Nombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox_Nombre.Location = New System.Drawing.Point(56, 16)
         Me.TextBox_Nombre.Name = "TextBox_Nombre"
         Me.TextBox_Nombre.Size = New System.Drawing.Size(383, 20)

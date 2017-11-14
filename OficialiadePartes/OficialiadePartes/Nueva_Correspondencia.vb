@@ -11,27 +11,48 @@ Public Class Nueva_Correspondencia
     Dim SQL_Str As String = Nothing
     Dim Cx As New SqlConnection(My.Settings.Cadena)
     Dim _Oficio As New Oficio
-
-
+    Dim Dependencias_Cargadas As Boolean = False
 
     Private Sub Nueva_Correspondencia_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Personas' Puede moverla o quitarla según sea necesario.
-        Me.PersonasTableAdapter.Fill(Me.CorrespondenciaDataSet.Personas)
-        'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Dependencias' Puede moverla o quitarla según sea necesario.
-        Me.DependenciasTableAdapter.Fill(Me.CorrespondenciaDataSet.Dependencias)
+        ''TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Personas' Puede moverla o quitarla según sea necesario.
+        'Me.PersonasTableAdapter.Fill(Me.CorrespondenciaDataSet.Personas)
+        ''TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet.Dependencias' Puede moverla o quitarla según sea necesario.
+        'Me.DependenciasTableAdapter.Fill(Me.CorrespondenciaDataSet.Dependencias)
+        Carga_Datos_Dependencias()
         Carga_Datos_EmpleadosPromo()
     End Sub
-
-    Private Sub ComboBox_Dependencia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_Dependencia.SelectedIndexChanged
-        Carga_Datos_Personal()
-
+    Sub Carga_Datos_Dependencias()
+        Try
+            SQL_Str = "Select Id_Dependencia, Dependencia from Dependencias Order by Dependencia"
+            Cx.Open()
+            Dim Cmd As New SqlCommand(SQL_Str, Cx)
+            Cmd.CommandType = CommandType.Text
+            Dim DA As New SqlDataAdapter(Cmd)
+            Dim DS As New DataSet
+            DA.Fill(DS, "Tabla")
+            With ComboBox_Dependencia
+                .DataSource = DS.Tables("Tabla")
+                .DisplayMember = "Dependencia"
+                .ValueMember = "Id_Dependencia"
+            End With
+            Dependencias_Cargadas = True
+        Catch ex As SqlException
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        Finally
+            If Cx.State = ConnectionState.Open Then
+                Cx.Close()
+            End If
+        End Try
     End Sub
-
     Sub Carga_Datos_EmpleadosPromo()
         Try
 
             Dim DependenciaActual As Integer = ComboBox_Dependencia.SelectedValue
-                SQL_Str = "Select Persona from PersonaldelasDependencias Where id_Dependencia =2"
+            SQL_Str = "Select Persona from PersonaldelasDependencias Where id_Dependencia =2 Order by Persona"
             Cx.Open()
             Dim Cmd As New SqlCommand(SQL_Str, Cx)
             Cmd.CommandType = CommandType.Text
@@ -59,7 +80,7 @@ Public Class Nueva_Correspondencia
         Try
             If IsDBNull(ComboBox_Dependencia.SelectedValue) = False Then
                 Dim DependenciaActual As Integer = ComboBox_Dependencia.SelectedValue
-                SQL_Str = "Select Id_Persona, Persona from PersonaldelasDependencias Where id_Dependencia = @Dependencia"
+                SQL_Str = "Select Id_Persona, Persona from PersonaldelasDependencias Where id_Dependencia = @Dependencia Order by Persona"
                 Cx.Open()
                 Dim Cmd As New SqlCommand(SQL_Str, Cx)
                 Cmd.CommandType = CommandType.Text
@@ -136,7 +157,6 @@ Public Class Nueva_Correspondencia
         End Try
     End Sub
 
-
     Private Sub Button_Aceptar_Click(sender As Object, e As EventArgs) Handles Button_Aceptar.Click
         Dim x As Integer
         Dim s As String = ""
@@ -155,8 +175,7 @@ Public Class Nueva_Correspondencia
             End If
         End If
 
-
-            _Oficio.NumOficio = TextBoxNumOficio.Text
+        _Oficio.NumOficio = TextBoxNumOficio.Text
         _Oficio.FechaOficio = DateTimePicker.Value
         _Oficio.FechaRecepcion = Now
         _Oficio.Destinatario = s
@@ -285,7 +304,6 @@ Public Class Nueva_Correspondencia
         End Try
     End Sub
 
-
     Private Sub TextBoxNumOficio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxNumOficio.KeyPress
 
         If e.KeyChar = "/" Then
@@ -294,6 +312,13 @@ Public Class Nueva_Correspondencia
             e.KeyChar = ""
         ElseIf e.KeyChar = "." Then
             e.KeyChar = ""
+        End If
+
+    End Sub
+
+    Private Sub ComboBox_Dependencia_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox_Dependencia.SelectedIndexChanged
+        If Dependencias_Cargadas = True Then
+            Carga_Datos_Personal()
         End If
 
     End Sub

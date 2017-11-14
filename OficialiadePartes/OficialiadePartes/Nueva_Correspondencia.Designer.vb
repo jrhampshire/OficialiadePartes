@@ -22,7 +22,6 @@ Partial Class Nueva_Correspondencia
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker = New System.Windows.Forms.DateTimePicker()
@@ -30,30 +29,22 @@ Partial Class Nueva_Correspondencia
         Me.Button_NuevoEmisor = New System.Windows.Forms.Button()
         Me.ComboBox_Remitente = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboBox_Dependencia = New System.Windows.Forms.ComboBox()
-        Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CorrespondenciaDataSet = New OficialiadePartes.CorrespondenciaDataSet()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox_Oficio = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_Observaciones = New System.Windows.Forms.TextBox()
-        Me.PersonasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox_Documento = New System.Windows.Forms.TextBox()
         Me.Button_CargaDocumento = New System.Windows.Forms.Button()
         Me.Button_Cancelar = New System.Windows.Forms.Button()
         Me.Button_Aceptar = New System.Windows.Forms.Button()
-        Me.DependenciasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
-        Me.PersonasTableAdapter = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.PersonasTableAdapter()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TextBoxNumOficio = New System.Windows.Forms.TextBox()
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+        Me.ComboBox_Dependencia = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -83,10 +74,10 @@ Partial Class Nueva_Correspondencia
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.ComboBox_Dependencia)
         Me.GroupBox1.Controls.Add(Me.Button_NuevoEmisor)
         Me.GroupBox1.Controls.Add(Me.ComboBox_Remitente)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.ComboBox_Dependencia)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 36)
         Me.GroupBox1.Name = "GroupBox1"
@@ -106,6 +97,7 @@ Partial Class Nueva_Correspondencia
         '
         'ComboBox_Remitente
         '
+        Me.ComboBox_Remitente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_Remitente.FormattingEnabled = True
         Me.ComboBox_Remitente.Location = New System.Drawing.Point(52, 49)
         Me.ComboBox_Remitente.Name = "ComboBox_Remitente"
@@ -120,27 +112,6 @@ Partial Class Nueva_Correspondencia
         Me.Label4.Size = New System.Drawing.Size(44, 13)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Nombre"
-        '
-        'ComboBox_Dependencia
-        '
-        Me.ComboBox_Dependencia.DataSource = Me.DependenciasBindingSource
-        Me.ComboBox_Dependencia.DisplayMember = "Dependencia"
-        Me.ComboBox_Dependencia.FormattingEnabled = True
-        Me.ComboBox_Dependencia.Location = New System.Drawing.Point(84, 17)
-        Me.ComboBox_Dependencia.Name = "ComboBox_Dependencia"
-        Me.ComboBox_Dependencia.Size = New System.Drawing.Size(368, 21)
-        Me.ComboBox_Dependencia.TabIndex = 0
-        Me.ComboBox_Dependencia.ValueMember = "Id_Dependencia"
-        '
-        'DependenciasBindingSource
-        '
-        Me.DependenciasBindingSource.DataMember = "Dependencias"
-        Me.DependenciasBindingSource.DataSource = Me.CorrespondenciaDataSet
-        '
-        'CorrespondenciaDataSet
-        '
-        Me.CorrespondenciaDataSet.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label3
         '
@@ -162,6 +133,7 @@ Partial Class Nueva_Correspondencia
         '
         'TextBox_Oficio
         '
+        Me.TextBox_Oficio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBox_Oficio.Location = New System.Drawing.Point(107, 222)
         Me.TextBox_Oficio.Name = "TextBox_Oficio"
         Me.TextBox_Oficio.Size = New System.Drawing.Size(364, 20)
@@ -183,11 +155,6 @@ Partial Class Nueva_Correspondencia
         Me.TextBox_Observaciones.Name = "TextBox_Observaciones"
         Me.TextBox_Observaciones.Size = New System.Drawing.Size(458, 97)
         Me.TextBox_Observaciones.TabIndex = 5
-        '
-        'PersonasBindingSource
-        '
-        Me.PersonasBindingSource.DataMember = "Personas"
-        Me.PersonasBindingSource.DataSource = Me.CorrespondenciaDataSet
         '
         'Label7
         '
@@ -241,14 +208,6 @@ Partial Class Nueva_Correspondencia
         Me.Button_Aceptar.Text = "Aceptar"
         Me.Button_Aceptar.UseVisualStyleBackColor = True
         '
-        'DependenciasTableAdapter
-        '
-        Me.DependenciasTableAdapter.ClearBeforeFill = True
-        '
-        'PersonasTableAdapter
-        '
-        Me.PersonasTableAdapter.ClearBeforeFill = True
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.Filter = """Archivos PDF|*.pdf"""
@@ -256,6 +215,7 @@ Partial Class Nueva_Correspondencia
         '
         'TextBoxNumOficio
         '
+        Me.TextBoxNumOficio.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TextBoxNumOficio.Location = New System.Drawing.Point(108, 16)
         Me.TextBoxNumOficio.Name = "TextBoxNumOficio"
         Me.TextBoxNumOficio.Size = New System.Drawing.Size(100, 20)
@@ -268,6 +228,15 @@ Partial Class Nueva_Correspondencia
         Me.CheckedListBox1.Name = "CheckedListBox1"
         Me.CheckedListBox1.Size = New System.Drawing.Size(383, 94)
         Me.CheckedListBox1.TabIndex = 14
+        '
+        'ComboBox_Dependencia
+        '
+        Me.ComboBox_Dependencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_Dependencia.FormattingEnabled = True
+        Me.ComboBox_Dependencia.Location = New System.Drawing.Point(84, 17)
+        Me.ComboBox_Dependencia.Name = "ComboBox_Dependencia"
+        Me.ComboBox_Dependencia.Size = New System.Drawing.Size(335, 21)
+        Me.ComboBox_Dependencia.TabIndex = 3
         '
         'Nueva_Correspondencia
         '
@@ -296,9 +265,6 @@ Partial Class Nueva_Correspondencia
         Me.Text = "Nuevo Oficio"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CorrespondenciaDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PersonasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -309,7 +275,6 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents ComboBox_Remitente As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents ComboBox_Dependencia As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TextBox_Oficio As TextBox
@@ -322,12 +287,8 @@ Partial Class Nueva_Correspondencia
     Friend WithEvents Button_Cancelar As Button
     Friend WithEvents Button_Aceptar As Button
     Friend WithEvents Button_NuevoEmisor As Button
-    Friend WithEvents CorrespondenciaDataSet As CorrespondenciaDataSet
-    Friend WithEvents DependenciasBindingSource As BindingSource
-    Friend WithEvents DependenciasTableAdapter As CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter
-    Friend WithEvents PersonasBindingSource As BindingSource
-    Friend WithEvents PersonasTableAdapter As CorrespondenciaDataSetTableAdapters.PersonasTableAdapter
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents TextBoxNumOficio As TextBox
     Friend WithEvents CheckedListBox1 As CheckedListBox
+    Friend WithEvents ComboBox_Dependencia As ComboBox
 End Class
