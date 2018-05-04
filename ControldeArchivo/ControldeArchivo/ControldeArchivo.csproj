@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AB3A4136-9E27-4C53-8CA4-9ACEF8F7BC53}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ControldeArchivo</RootNamespace>
+    <AssemblyName>ControldeArchivo</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\..\Ricardo\Dlls\barcode_bin\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EditaPersona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditaPersona.Designer.cs">
+      <DependentUpon>EditaPersona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edita_Departamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edita_Departamento.Designer.cs">
+      <DependentUpon>Edita_Departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edita_Fraccionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edita_Fraccionamiento.Designer.cs">
+      <DependentUpon>Edita_Fraccionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edita_Localidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edita_Localidad.Designer.cs">
+      <DependentUpon>Edita_Localidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado_Departamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado_Departamentos.Designer.cs">
+      <DependentUpon>Listado_Departamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado_Fraccionamientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado_Fraccionamientos.Designer.cs">
+      <DependentUpon>Listado_Fraccionamientos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado_Localidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado_Localidades.Designer.cs">
+      <DependentUpon>Listado_Localidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado_Personas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado_Personas.Designer.cs">
+      <DependentUpon>Listado_Personas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listado_Prestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado_Prestamos.Designer.cs">
+      <DependentUpon>Listado_Prestamos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos y Clases\class_Localidades.cs" />
+    <Compile Include="Nueva_Localidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nueva_Localidad.Designer.cs">
+      <DependentUpon>Nueva_Localidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nueva_Persona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nueva_Persona.Designer.cs">
+      <DependentUpon>Nueva_Persona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nuevo_Departamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nuevo_Departamento.Designer.cs">
+      <DependentUpon>Nuevo_Departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nuevo_Fraccionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nuevo_Fraccionamiento.Designer.cs">
+      <DependentUpon>Nuevo_Fraccionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nuevo_Prestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nuevo_Prestamo.Designer.cs">
+      <DependentUpon>Nuevo_Prestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recepcion_Archivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recepcion_Archivos.Designer.cs">
+      <DependentUpon>Recepcion_Archivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Selecciona_Solicitante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Selecciona_Solicitante.Designer.cs">
+      <DependentUpon>Selecciona_Solicitante.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="EditaPersona.resx">
+      <DependentUpon>EditaPersona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edita_Departamento.resx">
+      <DependentUpon>Edita_Departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edita_Fraccionamiento.resx">
+      <DependentUpon>Edita_Fraccionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edita_Localidad.resx">
+      <DependentUpon>Edita_Localidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado_Departamentos.resx">
+      <DependentUpon>Listado_Departamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado_Fraccionamientos.resx">
+      <DependentUpon>Listado_Fraccionamientos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado_Localidades.resx">
+      <DependentUpon>Listado_Localidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado_Personas.resx">
+      <DependentUpon>Listado_Personas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado_Prestamos.resx">
+      <DependentUpon>Listado_Prestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nueva_Localidad.resx">
+      <DependentUpon>Nueva_Localidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nueva_Persona.resx">
+      <DependentUpon>Nueva_Persona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nuevo_Departamento.resx">
+      <DependentUpon>Nuevo_Departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nuevo_Fraccionamiento.resx">
+      <DependentUpon>Nuevo_Fraccionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nuevo_Prestamo.resx">
+      <DependentUpon>Nuevo_Prestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Recepcion_Archivos.resx">
+      <DependentUpon>Recepcion_Archivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Selecciona_Solicitante.resx">
+      <DependentUpon>Selecciona_Solicitante.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Archive_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Archive_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log Out_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log Out_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-manager 16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-manager 32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Barcode.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

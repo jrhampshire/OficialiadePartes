@@ -52,7 +52,7 @@ Public Class Nueva_Correspondencia
         Try
 
             Dim DependenciaActual As Integer = ComboBox_Dependencia.SelectedValue
-            SQL_Str = "Select Persona from PersonaldelasDependencias Where id_Dependencia =2 Order by Persona"
+            SQL_Str = "Select Persona from PersonaldelasDependencias Where id_Dependencia = 2 Order by Persona"
             Cx.Open()
             Dim Cmd As New SqlCommand(SQL_Str, Cx)
             Cmd.CommandType = CommandType.Text

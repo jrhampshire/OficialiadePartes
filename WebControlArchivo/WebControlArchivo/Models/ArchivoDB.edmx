@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ArchivoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle_Prestamos">
+          <Key>
+            <PropertyRef Name="Id_Detalle_Prestamo" />
+          </Key>
+          <Property Name="Id_Detalle_Prestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Prestamo" Type="int" Nullable="false" />
+          <Property Name="Id_Documento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documentos">
+          <Key>
+            <PropertyRef Name="Id_Documento" />
+          </Key>
+          <Property Name="Id_Documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Fraccionamiento" Type="int" Nullable="false" />
+          <Property Name="Manzana" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Lote" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fraccionamientos">
+          <Key>
+            <PropertyRef Name="Id_Fraccionamiento" />
+          </Key>
+          <Property Name="Id_Fraccionamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Localidad" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localidades">
+          <Key>
+            <PropertyRef Name="Id_Localidad" />
+          </Key>
+          <Property Name="Id_Localidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Id_Personal" />
+          </Key>
+          <Property Name="Id_Personal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Departamento" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="BarCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Permisos" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamos">
+          <Key>
+            <PropertyRef Name="Id_Prestamo" />
+          </Key>
+          <Property Name="Id_Prestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Solicitante" Type="int" Nullable="false" />
+          <Property Name="Id_Autorizo" Type="int" Nullable="false" />
+          <Property Name="Observaciones" Type="nvarchar(max)" />
+          <Property Name="Fecha_Inicio" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Fecha_Fin" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Archivo.dbo.View_ListadodeFraccionamientos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_ListadodeFraccionamientos">
+          <Key>
+            <PropertyRef Name="Id_Fraccionamiento" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Id_Fraccionamiento" Type="int" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="250" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Archivo.dbo.View_ListadoPersonal' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_ListadoPersonal">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Permisos" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Departamento" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Permisos" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Archivo.dbo.View_Localidades' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="View_Localidades">
+          <Key>
+            <PropertyRef Name="Id_Localidad" />
+          </Key>
+          <Property Name="Id_Localidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="ArchivoModelStoreContainer">
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Prestamos" EntityType="Self.Detalle_Prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Documentos" EntityType="Self.Documentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fraccionamientos" EntityType="Self.Fraccionamientos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personal" EntityType="Self.Personal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_ListadodeFraccionamientos" EntityType="Self.View_ListadodeFraccionamientos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_ListadodeFraccionamientos].[Id_Fraccionamiento] AS [Id_Fraccionamiento], 
+    [View_ListadodeFraccionamientos].[Localidad] AS [Localidad], 
+    [View_ListadodeFraccionamientos].[Nombre] AS [Nombre]
+    FROM [dbo].[View_ListadodeFraccionamientos] AS [View_ListadodeFraccionamientos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_ListadoPersonal" EntityType="Self.View_ListadoPersonal" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_ListadoPersonal].[ID] AS [ID], 
+    [View_ListadoPersonal].[Nombre] AS [Nombre], 
+    [View_ListadoPersonal].[Departamento] AS [Departamento], 
+    [View_ListadoPersonal].[Permisos] AS [Permisos]
+    FROM [dbo].[View_ListadoPersonal] AS [View_ListadoPersonal]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Localidades" EntityType="Self.View_Localidades" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Localidades].[Id_Localidad] AS [Id_Localidad], 
+    [View_Localidades].[Localidad] AS [Localidad]
+    FROM [dbo].[View_Localidades] AS [View_Localidades]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ArchivoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Id_Departamento" />
+          </Key>
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departamento1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle_Prestamos">
+          <Key>
+            <PropertyRef Name="Id_Detalle_Prestamo" />
+          </Key>
+          <Property Name="Id_Detalle_Prestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Prestamo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Documento" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documento">
+          <Key>
+            <PropertyRef Name="Id_Documento" />
+          </Key>
+          <Property Name="Id_Documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Fraccionamiento" Type="Int32" Nullable="false" />
+          <Property Name="Manzana" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lote" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fraccionamiento">
+          <Key>
+            <PropertyRef Name="Id_Fraccionamiento" />
+          </Key>
+          <Property Name="Id_Fraccionamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Localidad" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localidade">
+          <Key>
+            <PropertyRef Name="Id_Localidad" />
+          </Key>
+          <Property Name="Id_Localidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Localidad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Personal">
+          <Key>
+            <PropertyRef Name="Id_Personal" />
+          </Key>
+          <Property Name="Id_Personal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Permisos" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="Id_Prestamo" />
+          </Key>
+          <Property Name="Id_Prestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Solicitante" Type="Int32" Nullable="false" />
+          <Property Name="Id_Autorizo" Type="Int32" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_Inicio" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Fecha_Fin" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="View_ListadodeFraccionamientos">
+          <Key>
+            <PropertyRef Name="Id_Fraccionamiento" />
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Id_Fraccionamiento" Type="Int32" Nullable="false" />
+          <Property Name="Localidad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_ListadoPersonal">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Permisos" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Departamento" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Permisos" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_Localidades">
+          <Key>
+            <PropertyRef Name="Id_Localidad" />
+          </Key>
+          <Property Name="Id_Localidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Localidad" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ArchivoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
+          <EntitySet Name="Detalle_Prestamos" EntityType="Self.Detalle_Prestamos" />
+          <EntitySet Name="Documentos" EntityType="Self.Documento" />
+          <EntitySet Name="Fraccionamientos" EntityType="Self.Fraccionamiento" />
+          <EntitySet Name="Localidades" EntityType="Self.Localidade" />
+          <EntitySet Name="Personals" EntityType="Self.Personal" />
+          <EntitySet Name="Prestamos" EntityType="Self.Prestamo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="View_ListadodeFraccionamientos" EntityType="Self.View_ListadodeFraccionamientos" />
+          <EntitySet Name="View_ListadoPersonal" EntityType="Self.View_ListadoPersonal" />
+          <EntitySet Name="View_Localidades" EntityType="Self.View_Localidades" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ArchivoModelStoreContainer" CdmEntityContainer="ArchivoEntities">
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="ArchivoModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Departamento1" ColumnName="Departamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Prestamos">
+            <EntityTypeMapping TypeName="ArchivoModel.Detalle_Prestamos">
+              <MappingFragment StoreEntitySet="Detalle_Prestamos">
+                <ScalarProperty Name="Id_Detalle_Prestamo" ColumnName="Id_Detalle_Prestamo" />
+                <ScalarProperty Name="Id_Prestamo" ColumnName="Id_Prestamo" />
+                <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documentos">
+            <EntityTypeMapping TypeName="ArchivoModel.Documento">
+              <MappingFragment StoreEntitySet="Documentos">
+                <ScalarProperty Name="Id_Documento" ColumnName="Id_Documento" />
+                <ScalarProperty Name="Id_Fraccionamiento" ColumnName="Id_Fraccionamiento" />
+                <ScalarProperty Name="Manzana" ColumnName="Manzana" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fraccionamientos">
+            <EntityTypeMapping TypeName="ArchivoModel.Fraccionamiento">
+              <MappingFragment StoreEntitySet="Fraccionamientos">
+                <ScalarProperty Name="Id_Fraccionamiento" ColumnName="Id_Fraccionamiento" />
+                <ScalarProperty Name="Id_Localidad" ColumnName="Id_Localidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localidades">
+            <EntityTypeMapping TypeName="ArchivoModel.Localidade">
+              <MappingFragment StoreEntitySet="Localidades">
+                <ScalarProperty Name="Id_Localidad" ColumnName="Id_Localidad" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personals">
+            <EntityTypeMapping TypeName="ArchivoModel.Personal">
+              <MappingFragment StoreEntitySet="Personal">
+                <ScalarProperty Name="Id_Personal" ColumnName="Id_Personal" />
+                <ScalarProperty Name="Id_Departamento" ColumnName="Id_Departamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Permisos" ColumnName="Permisos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamos">
+            <EntityTypeMapping TypeName="ArchivoModel.Prestamo">
+              <MappingFragment StoreEntitySet="Prestamos">
+                <ScalarProperty Name="Id_Prestamo" ColumnName="Id_Prestamo" />
+                <ScalarProperty Name="Id_Solicitante" ColumnName="Id_Solicitante" />
+                <ScalarProperty Name="Id_Autorizo" ColumnName="Id_Autorizo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+                <ScalarProperty Name="Fecha_Fin" ColumnName="Fecha_Fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ArchivoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ListadodeFraccionamientos">
+            <EntityTypeMapping TypeName="ArchivoModel.View_ListadodeFraccionamientos">
+              <MappingFragment StoreEntitySet="View_ListadodeFraccionamientos">
+                <ScalarProperty Name="Id_Fraccionamiento" ColumnName="Id_Fraccionamiento" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_ListadoPersonal">
+            <EntityTypeMapping TypeName="ArchivoModel.View_ListadoPersonal">
+              <MappingFragment StoreEntitySet="View_ListadoPersonal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Permisos" ColumnName="Permisos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Localidades">
+            <EntityTypeMapping TypeName="ArchivoModel.View_Localidades">
+              <MappingFragment StoreEntitySet="View_Localidades">
+                <ScalarProperty Name="Id_Localidad" ColumnName="Id_Localidad" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

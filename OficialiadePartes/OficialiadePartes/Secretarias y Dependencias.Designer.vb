@@ -26,7 +26,6 @@ Partial Class Secretarias_y_Dependencias
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.DependenciasBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CorrespondenciaDataSet2 = New OficialiadePartes.CorrespondenciaDataSet()
         Me.DependenciasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -40,12 +39,13 @@ Partial Class Secretarias_y_Dependencias
         Me.TextBox_Nombre = New System.Windows.Forms.TextBox()
         Me.Button_Salir = New System.Windows.Forms.Button()
         Me.DependenciasTableAdapter2 = New OficialiadePartes.CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter()
+        Me.CorrespondenciaDataSet2 = New OficialiadePartes.CorrespondenciaDataSet()
         CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -71,12 +71,6 @@ Partial Class Secretarias_y_Dependencias
         'DependenciasBindingSource2
         '
         Me.DependenciasBindingSource2.DataMember = "Dependencias"
-        Me.DependenciasBindingSource2.DataSource = Me.CorrespondenciaDataSet2
-        '
-        'CorrespondenciaDataSet2
-        '
-        Me.CorrespondenciaDataSet2.DataSetName = "CorrespondenciaDataSet"
-        Me.CorrespondenciaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Button1
         '
@@ -190,6 +184,11 @@ Partial Class Secretarias_y_Dependencias
         '
         Me.DependenciasTableAdapter2.ClearBeforeFill = True
         '
+        'CorrespondenciaDataSet2
+        '
+        Me.CorrespondenciaDataSet2.DataSetName = "CorrespondenciaDataSet"
+        Me.CorrespondenciaDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Secretarias_y_Dependencias
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -206,12 +205,12 @@ Partial Class Secretarias_y_Dependencias
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Secretarias y Dependencias"
         CType(Me.DependenciasBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DependenciasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CorrespondenciaDataSet2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -237,7 +236,7 @@ Partial Class Secretarias_y_Dependencias
     Friend WithEvents CorrespondenciaDataSet1 As CorrespondenciaDataSet
     Friend WithEvents DependenciasBindingSource1 As BindingSource
     Friend WithEvents DependenciasTableAdapter1 As CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter
-    Friend WithEvents CorrespondenciaDataSet2 As CorrespondenciaDataSet
     Friend WithEvents DependenciasBindingSource2 As BindingSource
     Friend WithEvents DependenciasTableAdapter2 As CorrespondenciaDataSetTableAdapters.DependenciasTableAdapter
+    Friend WithEvents CorrespondenciaDataSet2 As CorrespondenciaDataSet
 End Class

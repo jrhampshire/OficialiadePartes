@@ -72,7 +72,7 @@ Public Class Secretarias_y_Dependencias
 
     Private Sub Secretarias_y_Dependencias_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'CorrespondenciaDataSet2.Dependencias' Puede moverla o quitarla según sea necesario.
-        Me.DependenciasTableAdapter2.Fill(Me.CorrespondenciaDataSet2.Dependencias)
+        Carga_Datos_Dependencias()
 
         Carga_Datos_Personal()
 
@@ -161,7 +161,7 @@ Public Class Secretarias_y_Dependencias
     End Sub
 
     Private Sub Button_Borrar_Click(sender As Object, e As EventArgs) Handles Button_Borrar.Click
-        SQL_Str = "Delete Personas where id_Persona = @ID"
+
         Dim ID As Integer = 0
         If Me.DataGridView1.RowCount = 0 Then
             Exit Sub
@@ -176,24 +176,34 @@ Public Class Secretarias_y_Dependencias
                 Me.DataGridView1.Focus()
                 Exit Sub
             Else
-                Try
-                    Cx.Open()
-                    Dim Cmd As New SqlCommand(SQL_Str, Cx)
-                    Cmd.CommandType = CommandType.Text
-                    Cmd.Parameters.AddWithValue("@ID", ID)
-                    Cmd.ExecuteNonQuery()
-                    Carga_Datos_Personal()
-                Catch ex As SqlException
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    Exit Sub
-                Finally
-                    If Cx.State = ConnectionState.Open Then
-                        Cx.Close()
-                    End If
-                End Try
+                Dim Respuesta As DialogResult = Nothing
+                Respuesta = MessageBox.Show("Esta a punto de Borrar una Persona ¿Desea continuar?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1)
+                Select Case Respuesta
+                    Case System.Windows.Forms.DialogResult.Yes
+                        SQL_Str = "Delete Personas where id_Persona = @ID"
+                        Try
+                                Cx.Open()
+                                Dim Cmd As New SqlCommand(SQL_Str, Cx)
+                                Cmd.CommandType = CommandType.Text
+                                Cmd.Parameters.AddWithValue("@ID", ID)
+                                Cmd.ExecuteNonQuery()
+                                Carga_Datos_Personal()
+                            Catch ex As SqlException
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Exit Sub
+                            Catch ex As Exception
+                                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Exit Sub
+                            Finally
+                                If Cx.State = ConnectionState.Open Then
+                                    Cx.Close()
+                                End If
+                            End Try
+
+                    Case System.Windows.Forms.DialogResult.No
+                        Exit Sub
+                End Select
+
             End If
         Catch ex As Exception
             MessageBox.Show("Debe seleccionar una Persona a Borrar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
