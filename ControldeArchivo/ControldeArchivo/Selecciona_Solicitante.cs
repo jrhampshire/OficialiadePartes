@@ -56,7 +56,12 @@ namespace ControldeArchivo
         {
             this.Close();
         }
-
+        /// <summary>
+        /// Busca en el DataGrid el ID Seleccionado, verifica que realmente haya seleccionado a una persona
+        /// En caso afirmativo solicita la contraseña de verificacion 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Aceptar_Click(object sender, EventArgs e)
         {
             int Columna = 0;
@@ -79,10 +84,20 @@ namespace ControldeArchivo
             }
             else
             {
-                EditaPersona frm = new EditaPersona();
-                frm.CargaDatos(Id_Persona);
-                frm.ShowDialog();
-                Carga_Datos();
+                //Si existe la persona entonces solicita la contraseña de verificacion 
+                string Pwd = "";
+                Pwd = textBox_Pwd.Text;
+                Pwd = Pwd.Trim();
+                if (Pwd == "")
+                {
+                    MessageBox.Show("Este dato es obligatorio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBox_Pwd.Focus();
+                    return;
+                }
+                else
+                {
+
+                }
             }
         }
     }
